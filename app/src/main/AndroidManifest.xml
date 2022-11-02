@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterPage"></activity>
+        <activity android:name=".ForgotPasswordPage"></activity>
+        <activity android:name=".SearchInstructorPage"></activity>
     </application>
 
 </manifest>

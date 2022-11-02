@@ -54,6 +54,8 @@ class RegisterPage : AppCompatActivity() {
                     task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"Register Successful",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, SearchInstructorPage::class.java)
+                    startActivity(intent)
                 }else{
                     Toast.makeText(this,"Register Failed"+task.exception,Toast.LENGTH_SHORT).show()
                     Log.e("RegisterActivity", "Failed: ${task.exception}")
