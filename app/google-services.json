@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "287260036946",
+    "project_id": "driving-first-github",
+    "storage_bucket": "driving-first-github.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287260036946:android:4a11971e6d551d94ba348b",
+        "android_client_info": {
+          "package_name": "com.mosfeq.drivingfirstgithub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287260036946-io1u6eqn4ec7giet9e4f4irnmvn1uduu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBaQfBMNOFZFfZchprfSfY8gpM14L5q_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287260036946-io1u6eqn4ec7giet9e4f4irnmvn1uduu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

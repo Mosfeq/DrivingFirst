@@ -1,5 +1,6 @@
 package com.mosfeq.drivingfirstgithub
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -27,6 +28,17 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
             }
         }
+
+        tv_changeToRegisterPage.setOnClickListener{
+            val intent = Intent(this, RegisterPage::class.java)
+            startActivity(intent)
+        }
+
+        tv_forgotPassword.setOnClickListener{
+            val intent = Intent(this, ForgotPasswordPage::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun signInUser(){
