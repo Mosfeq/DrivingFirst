@@ -61,13 +61,13 @@ class SearchInstructorPage : AppCompatActivity() {
                             val email = document.getString("email")
                             val pass = document.getString("pass")
                             val user = document.getString("user")
-                            Log.d(TAG,"$email/$pass/$user")
+                            Log.d("TAG","$email/$pass/$user")
                         } else {
-                            Log.d(TAG, "The document doesn't exist.")
+                            Log.d("TAG", "The document doesn't exist.")
                         }
                     } else {
                         task.exception?.message?.let {
-                            Log.d(TAG, it)
+                            Log.d("TAG", it)
                         }
                     }
                 }
