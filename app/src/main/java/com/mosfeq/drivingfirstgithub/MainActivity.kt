@@ -6,13 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var database: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        db = FirebaseFirestore.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+        database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid
 
         et_enterEmail.text.clear()
         et_enterPassword.text.clear()
-
 
         btn_Login.setOnClickListener {
             if (et_enterEmail.text.trim().isNotEmpty() && et_enterPassword.text.trim().isNotEmpty()){
@@ -52,13 +54,13 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener{
                     task ->
                 if(task.isSuccessful){
-                    if (
-                        //use realtime database to check for user role to direct them to appropriate page
-                    ){
-                        Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
+//                    if (
+//                        //use realtime database to check for user role to direct them to appropriate page
+//                    ){
+//                        Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, SearchInstructorPage::class.java)
                         startActivity(intent)
-                    }
+//                    }
                 }else{
                     Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
                 }
