@@ -3,8 +3,10 @@ package com.mosfeq.drivingfirstgithub
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.register_page.*
 
@@ -19,9 +21,33 @@ class RegisterPage : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
+
+        val clicked = false;
+
+        et_createEmail.visibility = View.GONE
+        et_createPassword.visibility = View.GONE
+        et_createConfirmPassword.visibility = View.GONE
+        btn_Register.visibility = View.GONE
+
         et_createEmail.text.clear()
         et_createPassword.text.clear()
         et_createConfirmPassword.text.clear()
+
+        btn_RegisterAsInstructor.setOnClickListener{
+            et_createEmail.visibility = View.VISIBLE
+            et_createEmail.hint = "Email Instructor"
+            et_createPassword.visibility = View.VISIBLE
+            et_createConfirmPassword.visibility = View.VISIBLE
+            btn_Register.visibility = View.VISIBLE
+        }
+
+        btn_RegisterAsLearner.setOnClickListener{
+            et_createEmail.visibility = View.VISIBLE
+            et_createEmail.hint = "Email Learner"
+            et_createPassword.visibility = View.VISIBLE
+            et_createConfirmPassword.visibility = View.VISIBLE
+            btn_Register.visibility = View.VISIBLE
+        }
 
         btn_Register.setOnClickListener {
 
