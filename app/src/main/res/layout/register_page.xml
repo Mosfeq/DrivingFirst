@@ -4,8 +4,6 @@
     android:id="@+id/linlay_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="35dp"
     android:background="@color/dark_blue"
@@ -16,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_gravity="start"
@@ -67,7 +66,7 @@
         android:paddingTop="5dp"
         android:maxLines="1"
         android:hint="Email"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:inputType="text" />
 
     <EditText
@@ -83,7 +82,7 @@
         android:paddingTop="5dp"
         android:maxLines="1"
         android:hint="Password"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:inputType="textPassword" />
 
     <EditText
@@ -99,7 +98,7 @@
         android:paddingTop="5dp"
         android:maxLines="1"
         android:hint="Confirm Password"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:inputType="textPassword" />
 
     <Button
@@ -110,19 +109,18 @@
         android:textSize="15sp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/button_features"
         android:textColor="@color/dark_blue"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:id="@+id/linlay_login_here"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp">
 
         <TextView
-            android:id="@+id/tv_changePage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account? "

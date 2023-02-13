@@ -27,6 +27,11 @@ class ForgotPasswordPage : AppCompatActivity() {
             }
         }
 
+        tv_fpchangeToLoginPage.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun resetPassword(){

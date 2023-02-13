@@ -47,10 +47,10 @@ class RegisterPage : AppCompatActivity() {
 //            val tv_changeToLoginPage = tv_changeToLoginPage.layoutParams as ViewGroup.MarginLayoutParams
 //            tv_changeToLoginPage.setMargins(0, 370, 0, 0)
 //            linlay_login_here.layoutParams = tv_changeToLoginPage
-
-            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
-            margin_register.setMargins(0, 20, 0, 70)
-            linlay_login_here.layoutParams = margin_register
+//
+//            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
+//            margin_register.setMargins(0, 20, 0, 70)
+//            linlay_login_here.layoutParams = margin_register
 
             et_createEmail.visibility = View.VISIBLE
             et_createEmail.hint = "Email Instructor"
@@ -68,10 +68,10 @@ class RegisterPage : AppCompatActivity() {
 //            val tv_changeToLoginPage = tv_changeToLoginPage.layoutParams as ViewGroup.MarginLayoutParams
 //            tv_changeToLoginPage.setMargins(0, 360, 0, 0)
 //            linlay_login_here.layoutParams = tv_changeToLoginPage
-
-            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
-            margin_register.setMargins(0, 20, 0, 70)
-            linlay_login_here.layoutParams = margin_register
+//
+//            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
+//            margin_register.setMargins(0, 20, 0, 70)
+//            linlay_login_here.layoutParams = margin_register
 
             et_createEmail.visibility = View.VISIBLE
             et_createEmail.hint = "Email Learner"
