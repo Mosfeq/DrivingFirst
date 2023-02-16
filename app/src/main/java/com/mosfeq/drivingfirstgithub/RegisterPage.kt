@@ -4,20 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.register_page.*
+import com.mosfeq.drivingfirstgithub.databinding.RegisterPageBinding
 
 class RegisterPage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding: RegisterPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.register_page)
+        binding = RegisterPageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
@@ -29,16 +29,16 @@ class RegisterPage : AppCompatActivity() {
 //            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
 //        )
 
-        et_createEmail.visibility = View.GONE
-        et_createPassword.visibility = View.GONE
-        et_createConfirmPassword.visibility = View.GONE
-        btn_Register.visibility = View.GONE
+        binding.etCreateEmail.visibility = View.INVISIBLE
+        binding.etCreatePassword.visibility = View.INVISIBLE
+        binding.etCreateConfirmPassword.visibility = View.INVISIBLE
+        binding.btnRegister.visibility = View.INVISIBLE
 
-        et_createEmail.text.clear()
-        et_createPassword.text.clear()
-        et_createConfirmPassword.text.clear()
+        binding.etCreateEmail.text.clear()
+        binding.etCreatePassword.text.clear()
+        binding.etCreateConfirmPassword.text.clear()
 
-        btn_RegisterAsInstructor.setOnClickListener{
+        binding.btnRegisterAsInstructor.setOnClickListener{
 
 //            val tv_changePage = tv_changePage.layoutParams as ViewGroup.MarginLayoutParams
 //            tv_changePage.setMargins(30, 370, 0, 0)
@@ -52,14 +52,14 @@ class RegisterPage : AppCompatActivity() {
 //            margin_register.setMargins(0, 20, 0, 70)
 //            linlay_login_here.layoutParams = margin_register
 
-            et_createEmail.visibility = View.VISIBLE
-            et_createEmail.hint = "Email Instructor"
-            et_createPassword.visibility = View.VISIBLE
-            et_createConfirmPassword.visibility = View.VISIBLE
-            btn_Register.visibility = View.VISIBLE
+            binding.etCreateEmail.visibility = View.VISIBLE
+            binding.etCreateEmail.hint = "Email Instructor"
+            binding.etCreatePassword.visibility = View.VISIBLE
+            binding.etCreateConfirmPassword.visibility = View.VISIBLE
+            binding.btnRegister.visibility = View.VISIBLE
         }
 
-        btn_RegisterAsLearner.setOnClickListener{
+        binding.btnRegisterAsLearner.setOnClickListener{
 
 //            val tv_changePage = tv_changePage.layoutParams as ViewGroup.MarginLayoutParams
 //            tv_changePage.setMargins(30, 360, 0, 0)
@@ -73,24 +73,24 @@ class RegisterPage : AppCompatActivity() {
 //            margin_register.setMargins(0, 20, 0, 70)
 //            linlay_login_here.layoutParams = margin_register
 
-            et_createEmail.visibility = View.VISIBLE
-            et_createEmail.hint = "Email Learner"
-            et_createPassword.visibility = View.VISIBLE
-            et_createConfirmPassword.visibility = View.VISIBLE
-            btn_Register.visibility = View.VISIBLE
+            binding.etCreateEmail.visibility = View.VISIBLE
+            binding.etCreateEmail.hint = "Email Learner"
+            binding.etCreatePassword.visibility = View.VISIBLE
+            binding.etCreateConfirmPassword.visibility = View.VISIBLE
+            binding.btnRegister.visibility = View.VISIBLE
         }
 
-        btn_Register.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
 
-            if(et_createEmail.text.trim().isNotEmpty() && et_createPassword.text.trim().isNotEmpty() && et_createConfirmPassword.text.trim().isNotEmpty()){
-                if(et_createPassword.text.toString() == et_createConfirmPassword.text.toString()){
+            if(binding.etCreateEmail.text.trim().isNotEmpty() && binding.etCreatePassword.text.trim().isNotEmpty() && binding.etCreateConfirmPassword.text.trim().isNotEmpty()){
+                if(binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()){
                     registerUser()
-                    et_createEmail.text.clear()
-                    et_createPassword.text.clear()
-                    et_createConfirmPassword.text.clear()
+                    binding.etCreateEmail.text.clear()
+                    binding.etCreatePassword.text.clear()
+                    binding.etCreateConfirmPassword.text.clear()
                 }else{
                     Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-                    Log.e("Match", "CP = $et_createPassword, CCP = $et_createConfirmPassword")
+                    Log.e("Match", "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}")
                 }
             }else{
                 Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
@@ -98,7 +98,7 @@ class RegisterPage : AppCompatActivity() {
 
         }
 
-        tv_changeToLoginPage.setOnClickListener{
+        binding.tvChangeToLoginPage.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -106,12 +106,12 @@ class RegisterPage : AppCompatActivity() {
     }
 
     private fun registerUser(){
-        auth.createUserWithEmailAndPassword(et_createEmail.text.trim().toString(), et_createPassword.text.trim().toString())
+        auth.createUserWithEmailAndPassword(binding.etCreateEmail.text.trim().toString(), binding.etCreatePassword.text.trim().toString())
             .addOnCompleteListener{
                     task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"Register Successful",Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, SearchInstructorPage::class.java)
+                    val intent = Intent(this, LearnerFragmentManager::class.java)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,"Register Failed"+task.exception,Toast.LENGTH_SHORT).show()

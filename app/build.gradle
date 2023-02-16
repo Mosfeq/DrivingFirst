@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id('kotlin-android-extensions')
+//    id("androidx.navigation.safeargs")
     id 'com.google.gms.google-services'
 }
 
@@ -28,11 +28,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+        viewBinding {
+            enabled = true
+        }
+
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-    buildFeatures {
-        viewBinding = true
     }
     namespace 'com.mosfeq.drivingfirstgithub'
 }
@@ -46,12 +48,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
+
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
+//    implementation 'androidx.core:core-ktx:+'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

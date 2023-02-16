@@ -1,18 +1,20 @@
 package com.mosfeq.drivingfirstgithub
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.mosfeq.drivingfirstgithub.databinding.LearnerFragmentManagerBinding
 
-class SearchInstructorPage : AppCompatActivity() {
+class LearnerFragmentManager : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
+    private lateinit var binding: LearnerFragmentManagerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.search_instructor_page)
+        binding = LearnerFragmentManagerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
