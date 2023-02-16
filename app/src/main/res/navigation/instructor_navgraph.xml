@@ -10,4 +10,19 @@
         android:name="com.mosfeq.drivingfirstgithub.SearchLearnerFragment"
         android:label="search_Learner_Fragment"
         tools:layout="@layout/fragment_search_learner" />
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.mosfeq.drivingfirstgithub.UsersFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" />
+    <fragment
+        android:id="@+id/timetableFragment"
+        android:name="com.mosfeq.drivingfirstgithub.TimetableFragment"
+        android:label="fragment_timetable"
+        tools:layout="@layout/fragment_timetable" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mosfeq.drivingfirstgithub.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mosfeq.drivingfirstgithub.databinding.InstructorFragmentManagerBinding
 
 class InstructorFragmentManager : AppCompatActivity(){

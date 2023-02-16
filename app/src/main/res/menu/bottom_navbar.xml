@@ -3,20 +3,23 @@
 
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/home"
         android:title="Home"/>
-    <!--        android:icon="@drawable/ic_home"-->
+
 
     <item
         android:id="@+id/usersFragment"
+        android:icon="@drawable/users"
         android:title="Users"/>
-<!--        android:icon="@drawable/ic_baseline_menu_book"-->
 
     <item
         android:id="@+id/timetableFragment"
+        android:icon="@drawable/timetable"
         android:title="Timetable"/>
 
     <item
         android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings"
         android:title="Settings"/>
 
 </menu>
