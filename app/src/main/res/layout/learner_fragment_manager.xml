@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LearnerFragmentManager">
+    tools:context=".learner.LearnerFragmentManager">
 
     <TextView
         android:layout_width="wrap_content"

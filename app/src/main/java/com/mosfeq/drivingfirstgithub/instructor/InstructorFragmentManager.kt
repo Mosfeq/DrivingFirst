@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub
+package com.mosfeq.drivingfirstgithub.instructor
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.InstructorFragmentManagerBinding
 
 class InstructorFragmentManager : AppCompatActivity(){

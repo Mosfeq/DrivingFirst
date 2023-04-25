@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SearchLearnerFragment">
+    tools:context=".instructor.SearchLearnerFragment">
 
     <TextView
         android:gravity="center"

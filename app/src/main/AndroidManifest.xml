@@ -25,8 +25,8 @@
         </activity>
         <activity android:name=".RegisterPage"></activity>
         <activity android:name=".ForgotPasswordPage"></activity>
-        <activity android:name=".LearnerFragmentManager"></activity>
-        <activity android:name=".InstructorFragmentManager"></activity>
+        <activity android:name=".learner.LearnerFragmentManager"></activity>
+        <activity android:name=".instructor.InstructorFragmentManager"></activity>
     </application>
 
 </manifest>

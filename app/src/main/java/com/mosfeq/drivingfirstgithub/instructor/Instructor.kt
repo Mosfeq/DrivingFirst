@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub
+package com.mosfeq.drivingfirstgithub.instructor
 
 data class Instructor(
     var id: String? = null,

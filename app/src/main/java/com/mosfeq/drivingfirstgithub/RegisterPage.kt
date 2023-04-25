@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageBinding
+import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 
 class RegisterPage : AppCompatActivity() {
 

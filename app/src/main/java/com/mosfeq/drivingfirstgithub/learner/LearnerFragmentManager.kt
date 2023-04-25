@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub
+package com.mosfeq.drivingfirstgithub.learner
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
