@@ -59,6 +59,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.tvSkip.setOnClickListener{
+            val intent = Intent(this, InstructorFragmentManager::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun signInUser(){

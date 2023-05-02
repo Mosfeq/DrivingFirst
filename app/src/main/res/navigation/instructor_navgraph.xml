@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/searchLearnerFragment"
         android:name="com.mosfeq.drivingfirstgithub.instructor.SearchLearnerFragment"
-        android:label="search_Learner_Fragment"
+        android:label="fragment_search_learner"
         tools:layout="@layout/fragment_search_learner" />
     <fragment
         android:id="@+id/usersFragment"
