@@ -5,5 +5,6 @@ data class Instructor(
     var firstname: String? = null,
     var lastname: String? = null,
     var email: String? = null,
-    var phoneNumber: Int? = null
+    var phoneNumber: Int? = null,
+    var isChecked: Boolean = false
 ){}

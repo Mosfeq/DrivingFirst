@@ -8,17 +8,17 @@
 
 
     <item
-        android:id="@+id/usersFragment"
+        android:id="@+id/usersLearnerFragment"
         android:icon="@drawable/users"
         android:title="Users"/>
 
     <item
-        android:id="@+id/timetableFragment"
+        android:id="@+id/timetableLearnerFragment"
         android:icon="@drawable/timetable"
         android:title="Timetable"/>
 
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/settingsLearnerFragment"
         android:icon="@drawable/settings"
         android:title="Settings"/>
 

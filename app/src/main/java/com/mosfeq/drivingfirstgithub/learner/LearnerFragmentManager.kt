@@ -2,13 +2,19 @@ package com.mosfeq.drivingfirstgithub.learner
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.LearnerFragmentManagerBinding
 
 class LearnerFragmentManager : AppCompatActivity() {
 
+    private lateinit var navController: NavController
     private lateinit var database: DatabaseReference
     private lateinit var binding: LearnerFragmentManagerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +28,14 @@ class LearnerFragmentManager : AppCompatActivity() {
 //        val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid!!
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.learner_fragment_manager) as NavHostFragment
+        navController = navHostFragment.findNavController()
+
+        binding.bottomNavbarLearner.setupWithNavController(navController)
+
+
+
 //        val uid = database.push().key!!
 //
 

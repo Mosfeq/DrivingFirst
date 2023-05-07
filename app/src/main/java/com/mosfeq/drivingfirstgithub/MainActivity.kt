@@ -9,6 +9,7 @@ import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.databinding.ActivityMainBinding
 import com.mosfeq.drivingfirstgithub.instructor.InstructorFragmentManager
+import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvSkip.setOnClickListener{
-            val intent = Intent(this, InstructorFragmentManager::class.java)
+            val intent = Intent(this, LearnerFragmentManager::class.java)
             startActivity(intent)
         }
 

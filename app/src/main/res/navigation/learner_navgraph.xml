@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/learner_navgraph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/learner_navgraph"
+    app:startDestination="@id/searchInstructorFragment">
 
+    <fragment
+        android:id="@+id/searchInstructorFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.SearchInstructorFragment"
+        android:label="fragment_search_instructor"
+        tools:layout="@layout/fragment_search_instructor" />
+    <fragment
+        android:id="@+id/usersLearnerFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.UsersLearnerFragment"
+        android:label="fragment_users_learner"
+        tools:layout="@layout/fragment_users_learner" />
+    <fragment
+        android:id="@+id/timetableLearnerFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.TimetableLearnerFragment"
+        android:label="fragment_timetable_learner"
+        tools:layout="@layout/fragment_timetable_learner" />
+    <fragment
+        android:id="@+id/settingsLearnerFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.SettingsLearnerFragment"
+        android:label="fragment_settings_learner"
+        tools:layout="@layout/fragment_settings_learner" />
 </navigation>
