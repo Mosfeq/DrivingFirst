@@ -11,58 +11,29 @@ import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.InstructorItemBinding
 
 class InstructorAdapter(
-    private val todos: MutableList<Instructor>
+    private val instructorList: ArrayList<Instructor>
 ): RecyclerView.Adapter<InstructorAdapter.InstructorViewHolder>() {
 
     private lateinit var binding: InstructorItemBinding
 
-    class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val firstName: TextView = itemView.findViewById(R.id.tvInstructorName)
+        val lastName: TextView = itemView.findViewById(R.id.tvInstructorLastname)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstructorViewHolder {
-        return InstructorViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.instructor_item,
-                parent,
-                false
-            )
-        )
-    }
-
-    fun addTodo(instructor: Instructor) {
-        todos.add(instructor)
-        notifyItemInserted(todos.size - 1)
-    }
-
-    fun deleteDoneTodos() {
-        todos.removeAll { todo ->
-            todo.isChecked
-        }
-        notifyDataSetChanged()
-    }
-
-    private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
-        if(isChecked) {
-            tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        } else {
-            tvTodoTitle.paintFlags = tvTodoTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-        }
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.instructor_item, parent, false)
+        return InstructorViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
-        val currentTodo = todos[position]
-        holder.itemView.apply {
-            binding.tvInstructorName.text = currentTodo.firstname
-            binding.cbDone.isChecked = currentTodo.isChecked
-            toggleStrikeThrough(binding.tvInstructorName, currentTodo.isChecked)
-            binding.cbDone.setOnCheckedChangeListener { _, isChecked ->
-                toggleStrikeThrough(binding.tvInstructorName, isChecked)
-                currentTodo.isChecked = !currentTodo.isChecked
-            }
-        }
+        val currentItem = instructorList[position]
+        holder.firstName.text = currentItem.firstname
+        holder.lastName.text = currentItem.lastname
     }
 
     override fun getItemCount(): Int {
-        return todos.size
+        return instructorList.size
     }
 
 
