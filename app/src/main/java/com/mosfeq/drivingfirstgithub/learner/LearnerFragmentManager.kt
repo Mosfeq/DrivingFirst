@@ -1,6 +1,7 @@
 package com.mosfeq.drivingfirstgithub.learner
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -54,10 +55,14 @@ class LearnerFragmentManager : AppCompatActivity() {
 //        )
 //
 //        val instructor = hashMapOf(
-//            "first" to "Alan",
-//            "middle" to "Mathison",
-//            "last" to "Turing",
-//            "born" to 1972
+//            "firstname" to "David",
+//            "lastname" to "Bale",
+//            "email" to "dbale30@gmail.com",
+//            "phoneNumber" to 447384728193,
+//            "age" to 30,
+//            "price" to 25,
+//            "gender" to "male",
+//            "marketingText" to ""
 //        )
 //
 //        db.collection("learners")

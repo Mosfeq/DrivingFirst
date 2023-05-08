@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageBinding
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 
@@ -24,6 +25,8 @@ class RegisterPage : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val db = FirebaseFirestore.getInstance()
+        val uid = auth.currentUser?.uid!!
         val clicked = false;
 
 //        val margin = LinearLayout.LayoutParams(
@@ -104,7 +107,11 @@ class RegisterPage : AppCompatActivity() {
             startActivity(intent)
         }
 
+//        val instructor = hashMapOf(
+//            "email" to binding.etCreateEmail.text.toString()
+//        )
     }
+
 
     private fun registerUser(){
         auth.createUserWithEmailAndPassword(binding.etCreateEmail.text.trim().toString(), binding.etCreatePassword.text.trim().toString())
