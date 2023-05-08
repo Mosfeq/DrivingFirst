@@ -1,8 +1,5 @@
 package com.mosfeq.drivingfirstgithub.instructor
 
-import com.google.type.DateTime
-import java.time.LocalDate
-
 data class Instructor(
     var age: Int? = null,
     var email: String? = null,
@@ -13,5 +10,5 @@ data class Instructor(
     var phoneNumber: Long? = null,
     var price: Int? = null,
 //    var dob: LocalDate? = null,
-    var id: String? = null
+    var uid: String? = null
 )

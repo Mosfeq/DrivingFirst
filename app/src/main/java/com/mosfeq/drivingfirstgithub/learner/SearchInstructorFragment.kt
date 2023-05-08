@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.mosfeq.drivingfirstgithub.R
@@ -28,6 +29,7 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
     lateinit var age: Array<Int>
     lateinit var phoneNumber: Array<Long>
     lateinit var marketingText: Array<String>
+    lateinit var uid: Array<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +39,8 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
 //        val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.rvInstructorRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-//        recyclerView.setHasFixedSize(true)
+//
+
         instructorList = arrayListOf<Instructor>()
 
 //        val instructorAdapter = InstructorAdapter(instructorList, this@SearchInstructorFragment)
@@ -53,8 +56,10 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
     }
 
     override fun onClick(position: Int) {
-        Toast.makeText(context, "Item Clicked at $position", Toast.LENGTH_SHORT).show()
-        val action = SearchInstructorFragmentDirections.actionSearchInstructorFragmentToInstructorInformation()
+        val selectedInstructor = instructorList[position]
+        val uid = selectedInstructor.uid
+        Toast.makeText(context, "Item Clicked at $position with UID: $uid", Toast.LENGTH_SHORT).show()
+        val action = SearchInstructorFragmentDirections.actionSearchInstructorFragmentToInstructorInformation(uid)
         findNavController().navigate(action)
     }
 
@@ -110,68 +115,68 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
 //        }
 //        return list
 //    }
-    private fun listView(){
-
-        val name: String = "Bob"
-        val list: Int = 10
-        instructorList = arrayListOf<Instructor>()
-
-        firstName = arrayOf(
-            "Mark",
-            "John",
-            name,
-            "Terry",
-            "Merlin",
-            "Test1",
-            "Test2",
-            "Test3",
-            "Test4",
-            "Test5",
-        )
-
-        marketingText = arrayOf(
-            "Rover",
-            "Lennon",
-            "Wheeler",
-            "Smith",
-            "Martel",
-            "Test1",
-            "Test2",
-            "Test3",
-            "Test4",
-            "Test5",
-        )
-
-        age = arrayOf(
-            30,
-            20,
-            10,
-            15,
-            47,
-            52,
-            73,
-            42,
-            35,
-            64
-        )
-
-        phoneNumber = arrayOf(
-            447700185214,
-            447700185215,
-            447700185216,
-            447700185217,
-            447700185218,
-            447700185219,
-            447700185220,
-            447700185221,
-            447700185222,
-            447700185223,
-        )
-
-        for (i in 0 until list){
-            val instructor = Instructor(age[i],null, null, firstName[i], null, marketingText[i], phoneNumber[i], null, null)
-            instructorList.add(instructor)
-        }
-
-    }
+//    private fun listView(){
+//
+//        val name: String = "Bob"
+//        val list: Int = 10
+//        instructorList = arrayListOf<Instructor>()
+//
+//        firstName = arrayOf(
+//            "Mark",
+//            "John",
+//            name,
+//            "Terry",
+//            "Merlin",
+//            "Test1",
+//            "Test2",
+//            "Test3",
+//            "Test4",
+//            "Test5",
+//        )
+//
+//        marketingText = arrayOf(
+//            "Rover",
+//            "Lennon",
+//            "Wheeler",
+//            "Smith",
+//            "Martel",
+//            "Test1",
+//            "Test2",
+//            "Test3",
+//            "Test4",
+//            "Test5",
+//        )
+//
+//        age = arrayOf(
+//            30,
+//            20,
+//            10,
+//            15,
+//            47,
+//            52,
+//            73,
+//            42,
+//            35,
+//            64
+//        )
+//
+//        phoneNumber = arrayOf(
+//            447700185214,
+//            447700185215,
+//            447700185216,
+//            447700185217,
+//            447700185218,
+//            447700185219,
+//            447700185220,
+//            447700185221,
+//            447700185222,
+//            447700185223,
+//        )
+//
+//        for (i in 0 until list){
+//            val instructor = Instructor(age[i],null, null, firstName[i], null, marketingText[i], phoneNumber[i], null, null)
+//            instructorList.add(instructor)
+//        }
+//
+//    }
 }

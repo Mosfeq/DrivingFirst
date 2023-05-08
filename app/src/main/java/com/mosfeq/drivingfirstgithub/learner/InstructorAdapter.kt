@@ -18,8 +18,6 @@ class InstructorAdapter(
     private val listener: ClickListener
 ): RecyclerView.Adapter<InstructorAdapter.InstructorViewHolder>() {
 
-    private lateinit var binding: InstructorItemBinding
-
     interface ClickListener{
         fun onClick(position: Int)
     }
@@ -46,6 +44,7 @@ class InstructorAdapter(
         holder.phoneNumber.text = currentItem.phoneNumber.toString()
         holder.age.text = currentItem.age.toString()
         holder.marketingText.text = currentItem.marketingText
+        holder.uid.text = currentItem.uid
 
 //        holder.itemView.setOnClickListener {
 //            onItemClick?.invoke(currentItem)
@@ -66,6 +65,7 @@ class InstructorAdapter(
         val phoneNumber: TextView = itemView.findViewById(R.id.tvInstructorNumber)
         val age: TextView = itemView.findViewById(R.id.tvInstructorAge)
         val marketingText: TextView = itemView.findViewById(R.id.tvMarketingText)
+        val uid: TextView = itemView.findViewById(R.id.tvInstructorUID)
 
         init {
             itemView.setOnClickListener {

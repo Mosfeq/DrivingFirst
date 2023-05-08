@@ -30,6 +30,7 @@
             android:layout_toEndOf="@id/iv_Image"
             android:text="Full Name"
             android:layout_marginTop="0dp"
+            android:layout_marginEnd="70dp"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -50,6 +51,14 @@
             android:layout_below="@id/tvInstructorName"
             android:layout_toEndOf="@+id/tvInstructorNumber"
             android:text="40 Years" />
+
+        <TextView
+            android:id="@+id/tvInstructorUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_toEndOf="@+id/tvInstructorName"
+            android:text="UID"/>
 
         <TextView
             android:id="@+id/tvMarketingText"

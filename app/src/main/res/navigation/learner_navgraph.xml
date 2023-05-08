@@ -33,5 +33,10 @@
         android:id="@+id/instructorInformation"
         android:name="com.mosfeq.drivingfirstgithub.learner.InstructorInformation"
         android:label="fragment_instructor_information"
-        tools:layout="@layout/fragment_instructor_information" />
+        tools:layout="@layout/fragment_instructor_information" >
+        <argument
+            android:name="uid"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
