@@ -2,18 +2,24 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="20dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="30dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+        android:layout_height="150dp"
+        android:padding="20dp">
 
         <ImageView
             android:id="@+id/iv_Image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="25dp"
             android:src="@drawable/users" />
 
         <TextView
@@ -21,33 +27,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/iv_Image"
-            android:text="Line 1"
+            android:text="Full Name"
+            android:layout_marginTop="0dp"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvInstructorLastname"
+            android:id="@+id/tvInstructorNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvInstructorName"
             android:layout_toEndOf="@id/iv_Image"
-            android:text="Line 2" />
+            android:layout_marginEnd="50dp"
+            android:text="Phone Number" />
+
+        <TextView
+            android:id="@+id/tvInstructorAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvInstructorName"
+            android:layout_toEndOf="@+id/tvInstructorNumber"
+            android:text="40 Years" />
+
+        <TextView
+            android:id="@+id/tvMarketingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvInstructorNumber"
+            android:layout_marginTop="15dp"
+            android:text="Marketing Information jjdasj sadjdas sadjjasdj asdjjdas ajsdjasdj asdjjsadsjad" />
 
     </RelativeLayout>
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvInstructorName"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="FirstName"-->
-<!--        android:textSize="24dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvInstructorLastname"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:text="Lastname"-->
-<!--        android:textSize="24dp"-->
-<!--        android:layout_height="wrap_content" />-->
 
 </androidx.cardview.widget.CardView>

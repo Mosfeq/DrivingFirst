@@ -9,7 +9,11 @@
         android:id="@+id/searchInstructorFragment"
         android:name="com.mosfeq.drivingfirstgithub.learner.SearchInstructorFragment"
         android:label="fragment_search_instructor"
-        tools:layout="@layout/fragment_search_instructor" />
+        tools:layout="@layout/fragment_search_instructor" >
+        <action
+            android:id="@+id/action_searchInstructorFragment_to_instructorInformation"
+            app:destination="@id/instructorInformation" />
+    </fragment>
     <fragment
         android:id="@+id/usersLearnerFragment"
         android:name="com.mosfeq.drivingfirstgithub.learner.UsersLearnerFragment"
@@ -25,4 +29,9 @@
         android:name="com.mosfeq.drivingfirstgithub.learner.SettingsLearnerFragment"
         android:label="fragment_settings_learner"
         tools:layout="@layout/fragment_settings_learner" />
+    <fragment
+        android:id="@+id/instructorInformation"
+        android:name="com.mosfeq.drivingfirstgithub.learner.InstructorInformation"
+        android:label="fragment_instructor_information"
+        tools:layout="@layout/fragment_instructor_information" />
 </navigation>
