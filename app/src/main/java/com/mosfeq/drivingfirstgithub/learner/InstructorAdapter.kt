@@ -41,10 +41,15 @@ class InstructorAdapter(
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
         val currentItem = instructorList[position]
         holder.firstName.text = currentItem.firstname
-        holder.phoneNumber.text = currentItem.phoneNumber.toString()
+        holder.lastName.text = currentItem.lastname
         holder.age.text = currentItem.age.toString()
+        holder.gender.text = currentItem.gender
+        holder.price.text = currentItem.price.toString()
         holder.marketingText.text = currentItem.marketingText
+
         holder.uid.text = currentItem.uid
+        holder.phoneNumber.text = currentItem.phoneNumber.toString()
+        holder.email.text = currentItem.email
 
 //        holder.itemView.setOnClickListener {
 //            onItemClick?.invoke(currentItem)
@@ -61,11 +66,16 @@ class InstructorAdapter(
     }
 
     inner class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val firstName: TextView = itemView.findViewById(R.id.tvInstructorName)
-        val phoneNumber: TextView = itemView.findViewById(R.id.tvInstructorNumber)
+        val firstName: TextView = itemView.findViewById(R.id.tvInstructorFirstname)
+        val lastName: TextView = itemView.findViewById(R.id.tvInstructorLastname)
         val age: TextView = itemView.findViewById(R.id.tvInstructorAge)
+        val gender: TextView = itemView.findViewById(R.id.tvInstructorGender)
+        val price: TextView = itemView.findViewById(R.id.tvInstructorPrice)
         val marketingText: TextView = itemView.findViewById(R.id.tvMarketingText)
+
         val uid: TextView = itemView.findViewById(R.id.tvInstructorUID)
+        val email: TextView = itemView.findViewById(R.id.tvInstructorEmail)
+        val phoneNumber: TextView = itemView.findViewById(R.id.tvInstructorNumber)
 
         init {
             itemView.setOnClickListener {

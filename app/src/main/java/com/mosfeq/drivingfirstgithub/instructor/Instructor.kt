@@ -9,6 +9,5 @@ data class Instructor(
     var marketingText: String? = null,
     var phoneNumber: Long? = null,
     var price: Int? = null,
-//    var dob: LocalDate? = null,
     var uid: String? = null
 )

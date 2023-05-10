@@ -17,6 +17,7 @@ import com.mosfeq.drivingfirstgithub.instructor.Instructor
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
+import java.lang.NullPointerException
 
 class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), InstructorAdapter.ClickListener {
 
@@ -25,11 +26,11 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
     private lateinit var instructorList: ArrayList<Instructor>
     private lateinit var db: FirebaseFirestore
 
-    lateinit var firstName: Array<String>
-    lateinit var age: Array<Int>
-    lateinit var phoneNumber: Array<Long>
-    lateinit var marketingText: Array<String>
-    lateinit var uid: Array<String>
+//    lateinit var firstName: Array<String>
+//    lateinit var age: Array<Int>
+//    lateinit var phoneNumber: Array<Long>
+//    lateinit var marketingText: Array<String>
+//    lateinit var uid: Array<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +42,9 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
         recyclerView.layoutManager = LinearLayoutManager(context)
 //
 
+        Log.e("TestNew", "working")
         instructorList = arrayListOf<Instructor>()
+        Log.e("TestNew", "working2")
 
 //        val instructorAdapter = InstructorAdapter(instructorList, this@SearchInstructorFragment)
 //        recyclerView.adapter = instructorAdapter
@@ -64,20 +67,27 @@ class SearchInstructorFragment: Fragment(R.layout.fragment_search_instructor), I
     }
 
     private fun getInstructorList(){
+        Log.e("TestNew", "working3")
         db = FirebaseFirestore.getInstance()
         db.collection("instructors").get()
             .addOnSuccessListener {
                 if (!it.isEmpty){
+                    Log.e("TestNew", "working4")
                     for (data in it.documents){
-                        val instructor:Instructor? = data.toObject(Instructor::class.java)
-                        if (instructor != null){
+                        Log.e("TestNew", "working5")
+                        val instructor: Instructor? = data.toObject(Instructor::class.java)
+                        Log.e("TestNew", "working6")
+                        if (instructor != null) {
                             instructorList.add(instructor)
                         }
+                        Log.e("TestNew", "working7")
                     }
+                    Log.e("TestNew", "working8")
                     recyclerView.adapter = InstructorAdapter(instructorList, this@SearchInstructorFragment)
                 }
             }
             .addOnFailureListener{
+                Log.e("TestNew", "working9")
                 Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
             }
 

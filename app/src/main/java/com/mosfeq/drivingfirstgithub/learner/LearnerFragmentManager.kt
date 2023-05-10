@@ -27,8 +27,8 @@ class LearnerFragmentManager : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Users")
 //        val db = FirebaseFirestore.getInstance()
-        val auth = FirebaseAuth.getInstance()
-        val uid = auth.currentUser?.uid!!
+//        val auth = FirebaseAuth.getInstance()
+//        val uid = auth.currentUser?.uid!!
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.learner_fragment_manager) as NavHostFragment
         navController = navHostFragment.findNavController()

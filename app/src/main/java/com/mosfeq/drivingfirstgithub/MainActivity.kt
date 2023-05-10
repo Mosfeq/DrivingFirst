@@ -19,9 +19,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var database: DatabaseReference
 
-//    private var learner = database.child("Users").get()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,15 +37,21 @@ class MainActivity : AppCompatActivity() {
 //
 //        btn_Login.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null)
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnLoginInstructor.setOnClickListener {
             if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
-                signInUser()
+                signInInstructor()
             }else{
                 Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
             }
         }
 
-
+        binding.btnLoginLearner.setOnClickListener {
+            if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
+                signInLearner()
+            }else{
+                Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         binding.tvChangeToRegisterPage.setOnClickListener{
             val intent = Intent(this, RegisterPage::class.java)
@@ -67,7 +70,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun signInUser(){
+    private fun signInLearner(){
+        auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
+            .addOnCompleteListener{
+                    task ->
+                if(task.isSuccessful){
+                    Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, LearnerFragmentManager::class.java)
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+    private fun signInInstructor(){
         auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
             .addOnCompleteListener{
                     task ->

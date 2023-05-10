@@ -26,6 +26,10 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
 //        val uid = auth.currentUser?.uid!!
         val uid = args.uid
 
+//        val name: String? = "name"
+//
+//        binding.tvfirstName.text = name
+
 //        val instructor = hashMapOf(
 //            "firstname" to "David",
 //            "lastname" to "Bale",
@@ -55,7 +59,7 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                         Log.e("TestNew","Tetsign")
                         val firstName = document.getString("firstname")
                         val age = document.get("age")
-//                        binding.tvfirstName.text = firstName.toString()
+//                        binding.tvfirstName.text = firstName
                         Log.e("TestNew", "Here: $firstName + $age")
                     } else {
                         Log.e("TestNew","Tetsign Fail2")
