@@ -11,6 +11,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.databinding.ActivityMainBinding
 import com.mosfeq.drivingfirstgithub.instructor.InstructorFragmentManager
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        requestPermissions()
         supportActionBar?.hide()
 
         firestore = FirebaseFirestore.getInstance()
@@ -124,6 +129,33 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun requestPermissions() {
+
+
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    p0: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
+                    token: PermissionToken?
+                ) {
+                    token?.continuePermissionRequest()
+                }
+
+            }).check()
+
     }
 
 }
