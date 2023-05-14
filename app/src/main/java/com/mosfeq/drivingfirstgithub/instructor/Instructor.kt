@@ -1,13 +1,17 @@
 package com.mosfeq.drivingfirstgithub.instructor
 
 data class Instructor(
-    var age: Int? = null,
-    var email: String? = null,
-    var firstname: String? = null,
+    var uid: String? = null,
+    var age: String? = null,
     var gender: String? = null,
-    var lastname: String? = null,
-    var marketingText: String? = null,
-    var phoneNumber: Long? = null,
-    var price: Int? = null,
-    var uid: String? = null
+    var phone: String? = null,
+    var pricePerLesson: String? = null,
+    var carType: String? = null,
+    var transType: String? = null,
+    var location: String? = null,
+    var mInformation: String? = null,
+    var email: String? = null,
+    var name: String? = null,
+    var uri: String? = null,
+    var description: String? = null
 )
