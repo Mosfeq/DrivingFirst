@@ -1,141 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="20dp"
-    app:cardCornerRadius="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="117dp"
     android:layout_marginLeft="30dp"
-    android:layout_marginRight="30dp"
     android:layout_marginTop="25dp"
-    android:layout_marginBottom="15dp">
+    android:layout_marginRight="30dp"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="20dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/iv_Image"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="70dp"-->
-<!--            android:layout_marginTop="0dp"-->
-<!--            android:layout_marginEnd="25dp"-->
-<!--            android:src="@drawable/users" />-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1.4">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/img1"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/dottedcircle"
+                            android:padding="2dp"
+                            android:src="@drawable/profilepic" />
 
-        <TextView
-            android:id="@+id/tvInstructorFirstname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvInstructorLastname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/tvInstructorFirstname"
-            android:text="Surname"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="70dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".6"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tvInstructorAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorFirstname"
-            android:layout_marginEnd="3dp"
-            android:text="40" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
 
-        <TextView
-            android:id="@+id/yearsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorFirstname"
-            android:layout_toEndOf="@+id/tvInstructorAge"
-            android:layout_marginEnd="20dp"
-            android:text="Y" />
+                                <TextView
+                                    android:id="@+id/tvInstructorFirstname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight=".6"
+                                    android:text="Name"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
-
-        <TextView
-            android:id="@+id/tvInstructorGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorFirstname"
-            android:layout_toEndOf="@+id/yearsText"
-            android:layout_marginEnd="80dp"
-            android:text="Male"/>
-
-        <TextView
-            android:id="@+id/poundSignText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorLastname"
-            android:layout_toEndOf="@+id/tvInstructorGender"
-            android:layout_marginEnd="2dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="£"/>
-
-        <TextView
-            android:id="@+id/tvInstructorPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorLastname"
-            android:layout_toEndOf="@+id/poundSignText"
-            android:layout_marginEnd="1dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="34"/>
-
-        <TextView
-            android:id="@+id/perHourText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorLastname"
-            android:layout_toEndOf="@+id/tvInstructorPrice"
-            android:layout_marginEnd="2dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="/H"/>
-
-        <TextView
-            android:id="@+id/tvMarketingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvInstructorAge"
-            android:layout_marginTop="15dp"
-            android:text="Marketing Information jjdasj sadjdas sadjjasdj asdjjdas ajsdjasdj asdjjsadsjad" />
-
-        <TextView
-            android:id="@+id/tvInstructorNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/tvInstructorUID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/tvInstructorEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+                                <TextView
+                                    android:id="@+id/tvInstructorAge"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1.4"
+                                    android:gravity="end"
+                                    android:text="age"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
 
-    </RelativeLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                                <TextView
+                                    android:id="@+id/cartype"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight=".8"
+                                    android:text="Car type"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/marketing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="marketing"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/price"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1.2"
+                                    android:gravity="end"
+                                    android:text="Price"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:text="marketing"
+                            android:maxLines="2"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                </LinearLayout>
+
+        </LinearLayout>
 
 </androidx.cardview.widget.CardView>

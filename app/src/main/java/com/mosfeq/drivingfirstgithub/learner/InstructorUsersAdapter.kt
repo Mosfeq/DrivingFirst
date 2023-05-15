@@ -20,7 +20,7 @@ class InstructorUsersAdapter(
     override fun onBindViewHolder(holder: InstructorUserViewHolder, position: Int) {
         val currentInstructor = instructorList_Messaging[position]
 
-        holder.name.text = currentInstructor.firstname
+        holder.name.text = currentInstructor.name
     }
 
     override fun getItemCount(): Int {

@@ -11,10 +11,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mosfeq.drivingfirstgithub.instructor.Instructor
 import com.mosfeq.drivingfirstgithub.R
+import com.bumptech.glide.Glide
 import com.mosfeq.drivingfirstgithub.databinding.InstructorItemBinding
+import de.hdodenhof.circleimageview.CircleImageView
 
 class InstructorAdapter(
-    private val instructorList: ArrayList<Instructor>,
+    private var instructorList: ArrayList<Instructor>,
     private val listener: ClickListener
 ): RecyclerView.Adapter<InstructorAdapter.InstructorViewHolder>() {
 
@@ -40,16 +42,14 @@ class InstructorAdapter(
 
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
         val currentItem = instructorList[position]
-        holder.firstName.text = currentItem.firstname
-        holder.lastName.text = currentItem.lastname
-        holder.age.text = currentItem.age.toString()
-        holder.gender.text = currentItem.gender
-        holder.price.text = currentItem.price.toString()
-        holder.marketingText.text = currentItem.marketingText
-
-        holder.uid.text = currentItem.uid
-        holder.phoneNumber.text = currentItem.phoneNumber.toString()
-        holder.email.text = currentItem.email
+        holder.firstName.text = currentItem.name
+        holder.car.text = currentItem.carType
+        holder.age.text = currentItem.age.toString() + "Y"
+        holder.price.text = "£" + currentItem.pricePerLesson.toString() + "/H"
+        holder.marketingText.text = currentItem.mInformation.toString()
+        holder.des.text = currentItem.description
+        Glide.with(holder.image).load(instructorList[position].uri)
+            .into(holder.image)
 
 //        holder.itemView.setOnClickListener {
 //            onItemClick?.invoke(currentItem)
@@ -67,15 +67,12 @@ class InstructorAdapter(
 
     inner class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val firstName: TextView = itemView.findViewById(R.id.tvInstructorFirstname)
-        val lastName: TextView = itemView.findViewById(R.id.tvInstructorLastname)
         val age: TextView = itemView.findViewById(R.id.tvInstructorAge)
-        val gender: TextView = itemView.findViewById(R.id.tvInstructorGender)
-        val price: TextView = itemView.findViewById(R.id.tvInstructorPrice)
-        val marketingText: TextView = itemView.findViewById(R.id.tvMarketingText)
-
-        val uid: TextView = itemView.findViewById(R.id.tvInstructorUID)
-        val email: TextView = itemView.findViewById(R.id.tvInstructorEmail)
-        val phoneNumber: TextView = itemView.findViewById(R.id.tvInstructorNumber)
+        val price: TextView = itemView.findViewById(R.id.price)
+        val des: TextView = itemView.findViewById(R.id.description)
+        val car: TextView = itemView.findViewById(R.id.cartype)
+        val marketingText: TextView = itemView.findViewById(R.id.marketing)
+        val image: CircleImageView = itemView.findViewById(R.id.img1)
 
         init {
             itemView.setOnClickListener {
