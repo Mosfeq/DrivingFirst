@@ -24,6 +24,11 @@ class InstructorAdapter(
         fun onClick(position: Int)
     }
 
+    fun mfilterList(filteredList: ArrayList<Instructor>) {
+        instructorList = filteredList
+        notifyDataSetChanged()
+    }
+
 //    var onItemClick: ((instructor: Instructor) -> Unit)? = null
 
 //    private lateinit var clickListener: OnItemClickListener

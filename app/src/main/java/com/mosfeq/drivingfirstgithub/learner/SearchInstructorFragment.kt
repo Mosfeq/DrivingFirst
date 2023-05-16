@@ -1,6 +1,8 @@
 package com.mosfeq.drivingfirstgithub.learner
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.mosfeq.drivingfirstgithub.instructor.Instructor
 import com.mosfeq.drivingfirstgithub.databinding.FragmentSearchInstructorBinding
+import java.util.Locale
 
 class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
 
@@ -24,6 +27,7 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
     private lateinit var instructorList: ArrayList<Instructor>
 //    private lateinit var db: FirebaseFirestore
     private lateinit var binding: FragmentSearchInstructorBinding
+    val filterArrayList: java.util.ArrayList<Instructor> = ArrayList<Instructor>()
 
     var ref: DatabaseReference? = null
     var modelInstructor: Instructor? = null
@@ -38,16 +42,30 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
-//        listView()
-//        val layoutManager = LinearLayoutManager(context)
         binding.rvInstructorRecyclerView.layoutManager = LinearLayoutManager(context)
         getInstructorList()
 
+        binding.searchUserOrderTv.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                if (editable.isEmpty()) {
+                    if (instructorList.isNotEmpty()) {
+                        instructorAdapter.mfilterList(instructorList)
+                    }
+                    return
+                }
+                if (instructorList.isNotEmpty()) {
+                    filter(editable.toString())
+                }
+            }
+        })
+
 //
 
-        Log.e("TestNew", "working")
+//        Log.e("TestNew", "working")
         instructorList = arrayListOf<Instructor>()
-        Log.e("TestNew", "working2")
+//        Log.e("TestNew", "working2")
 
 //        val instructorAdapter = InstructorAdapter(instructorList, this@SearchInstructorFragment)
 //        recyclerView.adapter = instructorAdapter
@@ -57,6 +75,34 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
 //            findNavController().navigate(action)
 //        }
 
+    }
+
+    fun filter(text: String) {
+        filterArrayList.clear()
+        for (item in instructorList) {
+            try {
+
+                if (item.name!!.toLowerCase()
+                        .contains(text.lowercase(Locale.getDefault())) || item.description!!.toLowerCase()
+                        .contains(
+                            text.lowercase(
+                                Locale.getDefault()
+                            )
+                        ) || item.pricePerLesson!!.toLowerCase().contains(
+                        text.lowercase(
+                            Locale.getDefault()
+                        )
+                    )
+                ) {
+                    filterArrayList.add(item)
+                }
+                instructorAdapter.mfilterList(filterArrayList)
+
+            } catch (e: Exception) {
+                Log.i("androidstudio", "filter: " + e)
+            }
+
+        }
     }
     override fun onCreateView(
         inflater: LayoutInflater,
