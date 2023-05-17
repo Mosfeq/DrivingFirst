@@ -84,15 +84,8 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
 
                 if (item.name!!.toLowerCase()
                         .contains(text.lowercase(Locale.getDefault())) || item.description!!.toLowerCase()
-                        .contains(
-                            text.lowercase(
-                                Locale.getDefault()
-                            )
-                        ) || item.pricePerLesson!!.toLowerCase().contains(
-                        text.lowercase(
-                            Locale.getDefault()
-                        )
-                    )
+                        .contains(text.lowercase(Locale.getDefault())) || item.pricePerLesson!!.toLowerCase()
+                        .contains(text.lowercase(Locale.getDefault()))
                 ) {
                     filterArrayList.add(item)
                 }

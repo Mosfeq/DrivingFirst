@@ -1,21 +1,33 @@
 package com.mosfeq.drivingfirstgithub.learner
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorInformationBinding
+import com.mosfeq.drivingfirstgithub.instructor.Instructor
 
 class InstructorInformation: Fragment(R.layout.fragment_instructor_information) {
 
+    var ref: DatabaseReference? = null
+    var modelInstructor: Instructor? = null
+    var rep: String = ""
+    var pricePerHour: String = ""
+    var instructor: String = ""
     private lateinit var binding: FragmentInstructorInformationBinding
     private val args: InstructorInformationArgs by navArgs()
-//    private val args: InstructorInformationArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,6 +37,36 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         val db = FirebaseFirestore.getInstance()
 //        val uid = auth.currentUser?.uid!!
         val uid = args.uid
+        val a = uid!!.replace(".", "%")
+
+        ref = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Instructors").child("Users").child(a)
+
+        ref!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    binding.name.text = snapshot.child("name").getValue(String::class.java)
+                    binding.gender.text = snapshot.child("gender").getValue(String::class.java)
+                    binding.carType.text = snapshot.child("carType").getValue(String::class.java)
+                    binding.phoneNo.text = snapshot.child("phone").getValue(String::class.java)
+                    binding.mtype.text = snapshot.child("minformation").getValue(String::class.java)
+                    binding.Email.text = snapshot.child("email").getValue(String::class.java)
+                    instructor = snapshot.child("email").getValue(String::class.java).toString()
+                    binding.pricePerHour.text = snapshot.child("pricePerLesson").getValue(String::class.java)
+                    pricePerHour = snapshot.child("pricePerLesson").getValue(String::class.java).toString()
+                    binding.description.text = snapshot.child("description").getValue(String::class.java)
+                    Glide.with(binding.img1).load(snapshot.child("uri").getValue(String::class.java)).into(binding.img1)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("New Test", "Error: $error")
+            }
+        })
+
+    }
+
+
 
 //        val name: String? = "name"
 //
@@ -50,27 +92,27 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
 //                Log.w(tag, "Error adding document", e)
 //            }
 
-        db.collection("instructors").document(uid!!)
-            .get()
-            .addOnCompleteListener{ task ->
-                if (task.isSuccessful) {
-                    val document = task.result
-                    if (document.exists()) {
-                        Log.e("TestNew","Tetsign")
-                        val firstName = document.getString("firstname")
-                        val age = document.get("age")
+//        db.collection("instructors").document(uid!!)
+//            .get()
+//            .addOnCompleteListener{ task ->
+//                if (task.isSuccessful) {
+//                    val document = task.result
+//                    if (document.exists()) {
+//                        Log.e("TestNew","Tetsign")
+//                        val firstName = document.getString("firstname")
+//                        val age = document.get("age")
 //                        binding.tvfirstName.text = firstName
-                        Log.e("TestNew", "Here: $firstName + $age")
-                    } else {
-                        Log.e("TestNew","Tetsign Fail2")
-                    }
-                } else {
-                    Log.e("TestNew","Tetsign Fail")
-                    task.exception?.message?.let {
-                        Log.e("TestNew", it)
-                    }
-                }
-            }
+//                        Log.e("TestNew", "Here: $firstName + $age")
+//                    } else {
+//                        Log.e("TestNew","Tetsign Fail2")
+//                    }
+//                } else {
+//                    Log.e("TestNew","Tetsign Fail")
+//                    task.exception?.message?.let {
+//                        Log.e("TestNew", it)
+//                    }
+//                }
+//            }
 
 //    binding.tvAge.text = age.toString()
 //    Log.e("TestNew","$firstName/$age")
@@ -81,5 +123,4 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
 //
 //        }
 
-    }
 }

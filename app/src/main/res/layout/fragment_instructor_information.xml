@@ -1,26 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".learner.InstructorInformation">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tvfirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginEnd="50dp"
-        android:text="Name"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="3">
 
-    <TextView
-        android:id="@+id/tvAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_toEndOf="@+id/tvfirstName"
-        android:text="Age"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/dottedcircle"
+                android:padding="2dp"
+                android:src="@drawable/profilepic" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight=".5"
+            android:orientation="vertical"
+            android:layout_margin="13dp"
+            android:background="@drawable/round_layout_white_otp"
+            android:elevation="4dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_margin="13dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="7">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Car Model"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Car Transmission"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Gender"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Phone No"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Email Adress"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Price Per Hour"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:textStyle="bold">
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="7">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/name"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Jack"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:gravity="start">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Toyota"
+                        android:id="@+id/carType"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Automatic"
+                        android:id="@+id/mtype"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Male"
+                        android:gravity="start"
+                        android:id="@+id/gender"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="073848273822"
+                        android:gravity="start"
+                        android:id="@+id/phoneNo"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="jack29@gmail.com"
+                        android:gravity="start"
+                        android:id="@+id/Email"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="25"
+                        android:gravity="start"
+                        android:id="@+id/pricePerHour"
+                        android:textColor="@color/black"
+                        android:textSize="18sp">
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="26dp"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Description :"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_margin="7dp"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/black"
+                    android:id="@+id/description"
+                    android:textSize="15sp"
+                    android:text="Description Text"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="13dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1.3">
+
+            <Button
+                android:layout_width="130dp"
+                android:text="Message"
+                android:layout_margin="7dp"
+                android:id="@+id/message"
+                android:textSize="10sp"
+                android:layout_height="wrap_content">
+            </Button>
+
+            <Button
+                android:layout_width="130dp"
+                android:text="Book Lesson"
+                android:textSize="10sp"
+                android:layout_margin="7dp"
+                android:id="@+id/booking"
+                android:layout_height="wrap_content">
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
