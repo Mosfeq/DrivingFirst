@@ -3,7 +3,9 @@ package com.mosfeq.drivingfirstgithub.learner
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -24,8 +26,6 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
     var ref: DatabaseReference? = null
     var modelInstructor: Instructor? = null
     var rep: String = ""
-    var pricePerHour: String = ""
-    var instructor: String = ""
     private lateinit var binding: FragmentInstructorInformationBinding
     private val args: InstructorInformationArgs by navArgs()
 
@@ -45,15 +45,14 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         ref!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    Log.e("New Test", "Working")
                     binding.name.text = snapshot.child("name").getValue(String::class.java)
                     binding.gender.text = snapshot.child("gender").getValue(String::class.java)
                     binding.carType.text = snapshot.child("carType").getValue(String::class.java)
                     binding.phoneNo.text = snapshot.child("phone").getValue(String::class.java)
                     binding.mtype.text = snapshot.child("minformation").getValue(String::class.java)
                     binding.Email.text = snapshot.child("email").getValue(String::class.java)
-                    instructor = snapshot.child("email").getValue(String::class.java).toString()
                     binding.pricePerHour.text = snapshot.child("pricePerLesson").getValue(String::class.java)
-                    pricePerHour = snapshot.child("pricePerLesson").getValue(String::class.java).toString()
                     binding.description.text = snapshot.child("description").getValue(String::class.java)
                     Glide.with(binding.img1).load(snapshot.child("uri").getValue(String::class.java)).into(binding.img1)
                 }
@@ -64,6 +63,14 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
             }
         })
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?): View {
+        binding = FragmentInstructorInformationBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
