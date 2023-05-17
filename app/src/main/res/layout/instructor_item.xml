@@ -91,14 +91,14 @@
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/marketing"
+                                    android:id="@+id/transmission"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginEnd="0dp"
                                     android:layout_weight="1"
                                     android:gravity="start"
-                                    android:text="marketing"
+                                    android:text="Transmission"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 
@@ -123,7 +123,7 @@
                             android:layout_marginEnd="5dp"
                             android:layout_weight="1"
                             android:gravity="start"
-                            android:text="marketing"
+                            android:text="Marketing Text"
                             android:maxLines="2"
                             android:textColor="@color/black"
                             android:textSize="15sp" />

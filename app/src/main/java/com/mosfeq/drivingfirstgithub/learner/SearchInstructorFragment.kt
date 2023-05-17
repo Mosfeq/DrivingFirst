@@ -81,11 +81,12 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
         filterArrayList.clear()
         for (item in instructorList) {
             try {
-
-                if (item.name!!.toLowerCase()
-                        .contains(text.lowercase(Locale.getDefault())) || item.description!!.toLowerCase()
-                        .contains(text.lowercase(Locale.getDefault())) || item.pricePerLesson!!.toLowerCase()
-                        .contains(text.lowercase(Locale.getDefault()))
+                if (item.name!!.toLowerCase().contains(text.lowercase(Locale.getDefault())) ||
+                    item.description!!.toLowerCase().contains(text.lowercase(Locale.getDefault())) ||
+                    item.pricePerLesson!!.toLowerCase().contains(text.lowercase(Locale.getDefault())) ||
+                    item.carType!!.toLowerCase().contains(text.lowercase(Locale.getDefault())) ||
+                    item.age!!.toLowerCase().contains(text.lowercase(Locale.getDefault())) ||
+                    item.transmission!!.toLowerCase().contains(text.lowercase(Locale.getDefault()))
                 ) {
                     filterArrayList.add(item)
                 }

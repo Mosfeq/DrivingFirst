@@ -51,8 +51,8 @@ class InstructorAdapter(
         holder.car.text = currentItem.carType
         holder.age.text = currentItem.age.toString() + "Y"
         holder.price.text = "£" + currentItem.pricePerLesson.toString() + "/H"
-        holder.marketingText.text = currentItem.mInformation.toString()
         holder.des.text = currentItem.description
+        holder.transmission.text = currentItem.transmission
         Glide.with(holder.image).load(instructorList[position].uri)
             .into(holder.image)
 
@@ -76,7 +76,7 @@ class InstructorAdapter(
         val price: TextView = itemView.findViewById(R.id.price)
         val des: TextView = itemView.findViewById(R.id.description)
         val car: TextView = itemView.findViewById(R.id.cartype)
-        val marketingText: TextView = itemView.findViewById(R.id.marketing)
+        val transmission: TextView = itemView.findViewById(R.id.transmission)
         val image: CircleImageView = itemView.findViewById(R.id.img1)
 
         init {
