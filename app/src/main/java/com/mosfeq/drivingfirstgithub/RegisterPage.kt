@@ -69,11 +69,6 @@ class RegisterPage : AppCompatActivity() {
 //            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
 //        )
 
-//        binding.etCreateEmail.visibility = View.INVISIBLE
-//        binding.etCreatePassword.visibility = View.INVISIBLE
-//        binding.etCreateConfirmPassword.visibility = View.INVISIBLE
-//        binding.btnRegister.visibility = View.INVISIBLE
-
         storageReference =
             FirebaseStorage.getInstance("gs://driving-first-github.appspot.com/").reference
 
@@ -82,47 +77,6 @@ class RegisterPage : AppCompatActivity() {
         binding.etCreatePassword.text.clear()
         binding.etCreateConfirmPassword.text.clear()
 
-//        binding.btnRegisterAsInstructor.setOnClickListener{
-//
-////            val tv_changePage = tv_changePage.layoutParams as ViewGroup.MarginLayoutParams
-////            tv_changePage.setMargins(30, 370, 0, 0)
-////            linlay_login_here.layoutParams = tv_changePage
-////
-////            val tv_changeToLoginPage = tv_changeToLoginPage.layoutParams as ViewGroup.MarginLayoutParams
-////            tv_changeToLoginPage.setMargins(0, 370, 0, 0)
-////            linlay_login_here.layoutParams = tv_changeToLoginPage
-////
-////            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
-////            margin_register.setMargins(0, 20, 0, 70)
-////            linlay_login_here.layoutParams = margin_register
-//
-//            binding.etCreateEmail.visibility = View.VISIBLE
-//            binding.etCreateEmail.hint = "Email Instructor"
-//            binding.etCreatePassword.visibility = View.VISIBLE
-//            binding.etCreateConfirmPassword.visibility = View.VISIBLE
-//            binding.btnRegister.visibility = View.VISIBLE
-//        }
-//
-//        binding.btnRegisterAsLearner.setOnClickListener{
-//
-////            val tv_changePage = tv_changePage.layoutParams as ViewGroup.MarginLayoutParams
-////            tv_changePage.setMargins(30, 360, 0, 0)
-////            linlay_login_here.layoutParams = tv_changePage
-////
-////            val tv_changeToLoginPage = tv_changeToLoginPage.layoutParams as ViewGroup.MarginLayoutParams
-////            tv_changeToLoginPage.setMargins(0, 360, 0, 0)
-////            linlay_login_here.layoutParams = tv_changeToLoginPage
-////
-////            val margin_register = tv_register.layoutParams as ViewGroup.MarginLayoutParams
-////            margin_register.setMargins(0, 20, 0, 70)
-////            linlay_login_here.layoutParams = margin_register
-//
-//            binding.etCreateEmail.visibility = View.VISIBLE
-//            binding.etCreateEmail.hint = "Email Learner"
-//            binding.etCreatePassword.visibility = View.VISIBLE
-//            binding.etCreateConfirmPassword.visibility = View.VISIBLE
-//            binding.btnRegister.visibility = View.VISIBLE
-//        }
         binding.addImage.setOnClickListener() {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, PICK_IMAGE)
@@ -154,28 +108,6 @@ class RegisterPage : AppCompatActivity() {
 
         }
 
-        binding.btnRegisterAsInstructor.setOnClickListener {
-
-            if (binding.etCreateEmail.text.trim().isNotEmpty() && binding.etCreatePassword.text.trim().isNotEmpty() && binding.etCreateConfirmPassword.text.trim().isNotEmpty()
-            ) {
-                if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
-                    registerInstructor()
-                    binding.etCreateEmail.text.clear()
-                    binding.etCreatePassword.text.clear()
-                    binding.etCreateConfirmPassword.text.clear()
-                } else {
-                    Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-                    Log.e(
-                        "Match",
-                        "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}"
-                    )
-                }
-            } else {
-                Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
         binding.tvRegisterPageInstructor.setOnClickListener {
             val intent = Intent(this, RegisterPageAsInstructor::class.java)
             startActivity(intent)
@@ -188,25 +120,12 @@ class RegisterPage : AppCompatActivity() {
 
         }
     }
-//
-//
     private fun registerLearner(getEmail: String, getName: String){
     auth.createUserWithEmailAndPassword(
         getEmail, binding.etCreatePassword.text.trim().toString()
     ).addOnCompleteListener { task ->
         if (task.isSuccessful) {
-
-            // saving data in real time database
-
-            /*         val realTimeUserDb = FirebaseDatabase.getInstance().reference.child("users")
-                         .child(email.replace(".", "%"))
-                     val userHelperClass = UserDetails(
-                         binding.etCreateEmail.text.trim().toString(),
-                         binding.etCreateName.text.trim().toString()
-                     )
-                     realTimeUserDb.setValue(userHelperClass)*/
-
-            Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show()
             addLearnerToDatabase(getEmail, getName)
 
         } else {
@@ -216,24 +135,6 @@ class RegisterPage : AppCompatActivity() {
         }
     }
 }
-//
-    private fun registerInstructor(){
-    auth.createUserWithEmailAndPassword(
-        binding.etCreateEmail.text.trim().toString(),
-        binding.etCreatePassword.text.trim().toString()
-    ).addOnCompleteListener { task ->
-        if (task.isSuccessful) {
-            Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LearnerFragmentManager::class.java)
-            startActivity(intent)
-        } else {
-            Toast.makeText(this, "Register Failed" + task.exception, Toast.LENGTH_SHORT)
-                .show()
-            Log.e("RegisterActivity", "Failed: ${task.exception}")
-        }
-    }
-}
-//
     private fun addLearnerToDatabase(getEmail: String, getName: String){
         pdd = ProgressDialog(this@RegisterPage)
 
@@ -248,25 +149,17 @@ class RegisterPage : AppCompatActivity() {
                 dbLearner.child("Users").child(getEmail.replace(".", "%"))
                     .setValue(Learner(auth.currentUser?.uid!!, getName, getEmail, uri.toString()))
                 val dialog = Dialog(this@RegisterPage)
-                Objects.requireNonNull(dialog.window)!!
-                    .setBackgroundDrawableResource(android.R.color.transparent)
+                Objects.requireNonNull(dialog.window)!!.setBackgroundDrawableResource(android.R.color.transparent)
                 dialog.setContentView(R.layout.prompt)
                 val ok = dialog.findViewById<Button>(R.id.yes)
                 val msg = dialog.findViewById<TextView>(R.id.textshow)
-                msg.text = "Data inserted Successfully"
-                //                                                    egle = true;
+                msg.text = "Data Uploaded Successfully"
                 ok.setOnClickListener {
                     val intent = Intent(this, LearnerFragmentManager::class.java)
                     startActivity(intent)
                     dialog.dismiss()
                 }
                 dialog.show()
-                val learner = hashMapOf(
-                    "name" to getName,
-                    "email" to getEmail,
-                    "uid" to auth.currentUser?.uid!!,
-                    "uri" to uri.toString()
-                )
             })
             Snackbar.make(
                 findViewById(android.R.id.content),
@@ -290,7 +183,5 @@ class RegisterPage : AppCompatActivity() {
                 100.00 * snapshot.bytesTransferred / snapshot.totalByteCount
             pdd!!.setMessage("Percentage: " + progresspercent.toInt() + "%")
         }
-
     }
-
 }
