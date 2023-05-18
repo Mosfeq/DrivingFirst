@@ -32,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".learner.BookingPage"></activity>
         <activity android:name=".RegisterPageAsInstructor"></activity>
         <activity android:name=".RegisterPage"></activity>
         <activity android:name=".ForgotPasswordPage"></activity>

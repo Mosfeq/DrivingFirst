@@ -72,11 +72,11 @@ class RegisterPageAsInstructor: AppCompatActivity() {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, PICK_IMAGE)
         }
+
         binding.btnRegisterAsInstructor.setOnClickListener {
 
-            if (binding.etCreateEmail.text.trim()
-                    .isNotEmpty() && binding.etCreatePassword.text.trim()
-                    .isNotEmpty()
+            if (binding.etCreateEmail.text.trim().isNotEmpty()
+                && binding.etCreatePassword.text.trim().isNotEmpty()
                 && binding.age.text.trim().isNotEmpty()
                 && binding.gender.text.trim().isNotEmpty()
                 && binding.pnumber.text.trim().isNotEmpty()
@@ -87,7 +87,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                 && selectedImage != null
             ) {
                 if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
-                    registerins(
+                    registerAsInstructor(
                         binding.etCreateEmail.text.toString(),
                         binding.etCreateName.text.toString()
                     )
@@ -115,7 +115,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
         }
     }
 
-    private fun registerins(getEmail: String, getName: String) {
+    private fun registerAsInstructor(getEmail: String, getName: String) {
         auth.createUserWithEmailAndPassword(
             getEmail, binding.etCreatePassword.text.trim().toString()
         ).addOnCompleteListener { task ->
@@ -165,19 +165,13 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                 dialog.setContentView(R.layout.prompt)
                 val ok = dialog.findViewById<Button>(R.id.yes)
                 val msg = dialog.findViewById<TextView>(R.id.textshow)
-                msg.text = "Data inserted Successfully"
+                msg.text = "Data Uploaded Successfully"
                 ok.setOnClickListener {
                     val intent = Intent(this, LearnerFragmentManager::class.java)
                     startActivity(intent)
                     dialog.dismiss()
                 }
                 dialog.show()
-                val learner = hashMapOf(
-                    "name" to getName,
-                    "email" to getEmail,
-                    "uid" to auth.currentUser?.uid!!,
-                    "uri" to uri.toString()
-                )
             })
             Snackbar.make(
                 findViewById(android.R.id.content),

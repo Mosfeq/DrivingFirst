@@ -24,8 +24,8 @@ import com.mosfeq.drivingfirstgithub.instructor.Instructor
 class InstructorInformation: Fragment(R.layout.fragment_instructor_information) {
 
     var ref: DatabaseReference? = null
-    var modelInstructor: Instructor? = null
-    var rep: String = ""
+    var pricePerHour: String = ""
+    var instructor: String = ""
     private lateinit var binding: FragmentInstructorInformationBinding
     private val args: InstructorInformationArgs by navArgs()
 
@@ -55,6 +55,8 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                     binding.pricePerHour.text = snapshot.child("pricePerLesson").getValue(String::class.java)
                     binding.description.text = snapshot.child("description").getValue(String::class.java)
                     Glide.with(binding.img1).load(snapshot.child("uri").getValue(String::class.java)).into(binding.img1)
+                    instructor = snapshot.child("name").getValue(String::class.java).toString()
+                    pricePerHour = snapshot.child("pricePerLesson").getValue(String::class.java).toString()
                 }
             }
 
@@ -62,6 +64,13 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                 Log.e("New Test", "Error: $error")
             }
         })
+
+        binding.booking.setOnClickListener {
+            val intent = Intent(requireActivity(), BookingPage::class.java)
+            intent.putExtra("price",pricePerHour)
+            intent.putExtra("name",instructor)
+            startActivity(intent)
+        }
 
     }
 
