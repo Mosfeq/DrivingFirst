@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var database: DatabaseReference
 
+    private lateinit var dbLearner: DatabaseReference
+    var roleCheck: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -42,17 +46,17 @@ class MainActivity : AppCompatActivity() {
 //
 //        btn_Login.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null)
 
-        binding.btnLoginInstructor.setOnClickListener {
-            if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
-                signInInstructor()
-            }else{
-                Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        binding.btnLoginInstructor.setOnClickListener {
+//            if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
+//                signInInstructor()
+//            }else{
+//                Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
-        binding.btnLoginLearner.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
-                signInLearner()
+                signIn()
             }else{
                 Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
             }
@@ -75,27 +79,69 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun signInLearner(){
-        auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
-            .addOnCompleteListener{
-                    task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, LearnerFragmentManager::class.java)
-                    startActivity(intent)
-                }else{
-                    Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
+    private fun signIn(){
+        auth.signInWithEmailAndPassword(
+            binding.etEnterEmail.text.trim().toString(),
+            binding.etEnterPassword.text.trim().toString()
+        ).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                Preference.writeString(
+                    this@MainActivity, "email", binding.etEnterEmail.text.toString()
+                )
+                getUserData(binding.etEnterEmail.text.toString())
+            } else {
+                Toast.makeText(
+                    this, "Authentication Error" + task.exception, Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun getUserData(emailCheck: String) {
+        dbLearner =
+            FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Learners").child("Users").child(emailCheck.replace(".", "%"))
+
+        dbLearner!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                roleCheck = if (snapshot.exists()) {
+                    Preference.writeString(
+                        this@MainActivity, "role", "learner"
+                    )
+                    callRole(true)
+                    true
+                } else {
+                    Preference.writeString(
+                        this@MainActivity, "role", "instructor"
+                    )
+                    callRole(false)
+                    false
                 }
             }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
-    private fun signInInstructor(){
-        auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
-            .addOnCompleteListener{
-                    task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, InstructorFragmentManager::class.java)
-                    startActivity(intent)
+    private fun callRole(getRole: Boolean){
+        if (getRole) {
+            val intent = Intent(this, LearnerFragmentManager::class.java)
+            startActivity(intent)
+        }
+        if (!getRole) {
+            val intent = Intent(this, InstructorFragmentManager::class.java)
+            startActivity(intent)
+        }
+    }
+
+//    private fun signInInstructor(){
+//        auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
+//            .addOnCompleteListener{
+//                    task ->
+//                if(task.isSuccessful){
+//                    Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, InstructorFragmentManager::class.java)
+//                    startActivity(intent)
 //                    val uid = auth.currentUser?.uid!!
 //                    database.child("learner").child(uid).get().addOnSuccessListener {
 //                        if (it.exists()){
@@ -125,11 +171,11 @@ class MainActivity : AppCompatActivity() {
 //                        .addOnFailureListener{
 //                            Toast.makeText(this,"User doesn't exist",Toast.LENGTH_SHORT).show()
 //                        }
-                }else{
-                    Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+//                }else{
+//                    Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//    }
 
     private fun requestPermissions() {
 

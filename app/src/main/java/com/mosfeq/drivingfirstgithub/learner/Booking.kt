@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub
+package com.mosfeq.drivingfirstgithub.learner
 
 data class Booking(
     var pricePerLesson: String? = null,

@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.mosfeq.drivingfirstgithub.Booking
 import com.mosfeq.drivingfirstgithub.databinding.BookingPageBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
