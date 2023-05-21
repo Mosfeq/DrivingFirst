@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mosfeq.drivingfirstgithub.R
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
+import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
 
 class InstructorUsersAdapter(
     val instructorList_Messaging: ArrayList<Instructor>

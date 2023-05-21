@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub.learner
+package com.mosfeq.drivingfirstgithub.dataClasses
 
 data class Learner(
     var uid: String? = null,

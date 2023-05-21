@@ -1,18 +1,13 @@
-package com.mosfeq.drivingfirstgithub.learner
+package com.mosfeq.drivingfirstgithub.learner.adapters
 
-import android.content.Context
-import android.icu.text.Transliterator.Position
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
+import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
 import com.mosfeq.drivingfirstgithub.R
 import com.bumptech.glide.Glide
-import com.mosfeq.drivingfirstgithub.databinding.InstructorItemBinding
 import de.hdodenhof.circleimageview.CircleImageView
 
 class InstructorAdapter(

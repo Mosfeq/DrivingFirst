@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.mosfeq.drivingfirstgithub.R
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
+import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
 
 class UsersLearnerFragment: Fragment(R.layout.fragment_users_learner) {
 

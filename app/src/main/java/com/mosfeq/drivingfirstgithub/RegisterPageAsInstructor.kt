@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageInstructorBinding
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
+import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 import java.io.IOException
 import java.util.Objects

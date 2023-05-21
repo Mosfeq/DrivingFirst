@@ -17,8 +17,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.mosfeq.drivingfirstgithub.Preference
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
+import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
 import com.mosfeq.drivingfirstgithub.databinding.FragmentSearchInstructorBinding
+import com.mosfeq.drivingfirstgithub.learner.adapters.InstructorAdapter
 import java.util.Locale
 
 class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {

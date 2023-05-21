@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.mosfeq.drivingfirstgithub.Preference
+import com.mosfeq.drivingfirstgithub.dataClasses.Booking
 import com.mosfeq.drivingfirstgithub.databinding.BookingPageBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -21,6 +23,8 @@ class BookingPage: AppCompatActivity() {
     private var datePicked = ""
     private var timePicked = ""
     private var datetimepicked = ""
+    private var userEmail = ""
+    private var userEmailID = ""
     private lateinit var db: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,10 @@ class BookingPage: AppCompatActivity() {
         binding = BookingPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        intent = intent
+        userEmailID = Preference.readString(this@BookingPage, "email").toString().replace(".", "%").trim()
+        userEmail = Preference.readString(this@BookingPage, "email").toString()
 
         binding.instructorName.text = "Instructor Name: ${intent.getStringExtra("name")}"
         binding.instructorPrice.text = "Price Per Hour: £${intent.getStringExtra("price")}"
@@ -38,8 +46,7 @@ class BookingPage: AppCompatActivity() {
             val mMonth = calender[Calendar.MONTH]
             val mDay = calender[Calendar.DAY_OF_MONTH]
 
-            val mDateSetListener =
-                OnDateSetListener { view, year, month, day ->
+            val mDateSetListener = OnDateSetListener { view, year, month, day ->
                     datePicked = day.toString() + " " + (month + 1).toString() + ", " + year.toString()
                     Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
                     binding.dateTime.text = "$datePicked - $timePicked"
@@ -75,34 +82,81 @@ class BookingPage: AppCompatActivity() {
         }
 
         binding.booking.setOnClickListener(){
-            if(datePicked.isNotEmpty() && timePicked.isNotEmpty()){
-                booking()
-                Toast.makeText(this,"Lesson Booked",Toast.LENGTH_LONG).show()
-            }
-            else {
-                Toast.makeText(this,"Select Date & Time",Toast.LENGTH_LONG).show()
-            }
+            val calendar = Calendar.getInstance().time
+            val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val currentDate = df.format(calendar)
+            val selectedDate: String = datePicked
+            booking(currentDate, selectedDate)
+//            if(datePicked.isNotEmpty() && timePicked.isNotEmpty()){
+//                booking()
+//                Toast.makeText(this,"Lesson Booked",Toast.LENGTH_LONG).show()
+//            }
+//            else {
+//                Toast.makeText(this,"Select Date & Time",Toast.LENGTH_LONG).show()
+//            }
         }
     }
 
-    private fun booking(){
+    private fun booking(currentDate: String, selectedDate: String): Int{
         db = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("booking")
-        val i = (Random().nextInt(900000) + 100000).toString()
 
-        val c = Calendar.getInstance().time
-        val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val currentDate = df.format(c)
-        val selectedDate: String = datePicked
+        val bookingID = (Random().nextInt(900000) + 100000).toString()
         val comparedDate: Int = currentDate.compareTo(selectedDate)
 
         if (comparedDate > 0) {
+            //Current date is ahead of selected date
             Toast.makeText(this, "Can't select date from past!", Toast.LENGTH_LONG).show()
-        }else{
+            return 1
 
-//            Toast.makeText(this, "Booked", Toast.LENGTH_LONG).show()
+        } else if (comparedDate == 0){
+            // Both dates are equal
+            if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
+                db.child(userEmail).child(bookingID).setValue(
+                    Booking(
+                        intent.getStringExtra("price").toString(),
+                        userEmail,
+                        intent.getStringExtra("instName").toString(),
+                        intent.getStringExtra("instructor").toString(),
+                        datePicked,
+                        timePicked,
+                        intent.getStringExtra("instUri").toString(),
+                        intent.getStringExtra("lname").toString(),
+                        intent.getStringExtra("luri").toString(),
+                        datetimepicked,
+                        "",
+                        bookingID
+                    )
+                )
+                Toast.makeText(this, "Lesson Booked", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Date or Time required!", Toast.LENGTH_LONG).show()
+            }
+            return 0
         }
-
+        //Current date is behind of selected date
+        if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
+            db.child(userEmail).child(bookingID).setValue(
+                Booking(
+                    intent.getStringExtra("price").toString(),
+                    userEmail,
+                    intent.getStringExtra("instructorName").toString(),
+                    intent.getStringExtra("instructorEmail").toString(),
+                    datePicked,
+                    timePicked,
+                    intent.getStringExtra("instructorUri").toString(),
+                    intent.getStringExtra("learnerName").toString(),
+                    intent.getStringExtra("learnerUri").toString(),
+                    datetimepicked,
+                    "",
+                    bookingID
+                )
+            )
+            Toast.makeText(this, "Lesson Booked", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Date or Time required!", Toast.LENGTH_LONG).show()
+        }
+        return -1
     }
 
 }

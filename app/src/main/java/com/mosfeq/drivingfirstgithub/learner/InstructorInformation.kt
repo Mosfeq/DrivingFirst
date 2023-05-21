@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorInformationBinding
-import com.mosfeq.drivingfirstgithub.instructor.Instructor
 
 class InstructorInformation: Fragment(R.layout.fragment_instructor_information) {
 
@@ -80,11 +79,11 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         binding.booking.setOnClickListener {
             val intent = Intent(requireActivity(), BookingPage::class.java)
             intent.putExtra("price",pricePerHour)
-            intent.putExtra("name",instructorEmail)
-            intent.putExtra("instName", instructorName)
-            intent.putExtra("instUri", instructorUri)
-            intent.putExtra("lname", learnerName)
-            intent.putExtra("luri", learnerUri)
+            intent.putExtra("instructorEmail",instructorEmail)
+            intent.putExtra("instructorName", instructorName)
+            intent.putExtra("instructorUri", instructorUri)
+            intent.putExtra("learnerName", learnerName)
+            intent.putExtra("learnerUri", learnerUri)
             startActivity(intent)
         }
 
