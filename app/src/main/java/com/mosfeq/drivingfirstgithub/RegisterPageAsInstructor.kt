@@ -95,11 +95,11 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                     binding.etCreatePassword.text.clear()
                     binding.etCreateConfirmPassword.text.clear()
                 } else {
-                    Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-                    Log.e(
-                        "Match",
-                        "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}"
-                    )
+                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+//                    Log.e(
+//                        "Match",
+//                        "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}"
+//                    )
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
@@ -126,7 +126,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Register Failed" + task.exception, Toast.LENGTH_SHORT)
                     .show()
-                Log.e("RegisterActivity", "Failed: ${task.exception}")
+//                Log.e("RegisterActivity", "Failed: ${task.exception}")
             }
         }
     }

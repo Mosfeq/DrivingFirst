@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.instructor.Instructor
 import com.mosfeq.drivingfirstgithub.databinding.FragmentSearchInstructorBinding
 import java.util.Locale
@@ -31,6 +32,7 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
 
     var ref: DatabaseReference? = null
     var modelInstructor: Instructor? = null
+    var rep: String = ""
 
 //    lateinit var firstName: Array<String>
 //    lateinit var age: Array<Int>
@@ -60,21 +62,7 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
                 }
             }
         })
-
-//
-
-//        Log.e("TestNew", "working")
         instructorList = arrayListOf<Instructor>()
-//        Log.e("TestNew", "working2")
-
-//        val instructorAdapter = InstructorAdapter(instructorList, this@SearchInstructorFragment)
-//        recyclerView.adapter = instructorAdapter
-
-//        instructorAdapter.onItemClick = {
-//            val action = SearchInstructorFragmentDirections.actionSearchInstructorFragmentToInstructorInformation()
-//            findNavController().navigate(action)
-//        }
-
     }
 
     fun filter(text: String) {
@@ -115,6 +103,9 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
     }
 
     private fun getInstructorList() {
+        rep = Preference.readString(requireActivity(), "email").toString()
+        val a = rep.replace(".", "%")
+
         ref = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Instructors").child("Users")
 

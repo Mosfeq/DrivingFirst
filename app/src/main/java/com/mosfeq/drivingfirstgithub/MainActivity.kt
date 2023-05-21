@@ -134,52 +134,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    private fun signInInstructor(){
-//        auth.signInWithEmailAndPassword(binding.etEnterEmail.text.trim().toString(), binding.etEnterPassword.text.trim().toString())
-//            .addOnCompleteListener{
-//                    task ->
-//                if(task.isSuccessful){
-//                    Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(this, InstructorFragmentManager::class.java)
-//                    startActivity(intent)
-//                    val uid = auth.currentUser?.uid!!
-//                    database.child("learner").child(uid).get().addOnSuccessListener {
-//                        if (it.exists()){
-//                            val role = it.child("Role").value.toString()
-//                            if (role == "Learner"){
-//                                Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
-//                                val intent = Intent(this, LearnerFragmentManager::class.java)
-//                                startActivity(intent)
-//                            }
-//                        }
-//                        else{
-//                            database.child("instructor").child(uid).get().addOnSuccessListener {
-//                                if (it.exists()){
-//                                    val role = it.child("Role").value.toString()
-//                                    if (role == "Instructor"){
-//                                        Toast.makeText(this,"Login Successful",Toast.LENGTH_SHORT).show()
-//                                        val intent = Intent(this, InstructorFragmentManager::class.java)
-//                                        startActivity(intent)
-//                                    }
-//                                }
-//                                else{
-//                                    Toast.makeText(this,"Not Instructor",Toast.LENGTH_SHORT).show()
-//                                }
-//                            }
-//                        }
-//                    }
-//                        .addOnFailureListener{
-//                            Toast.makeText(this,"User doesn't exist",Toast.LENGTH_SHORT).show()
-//                        }
-//                }else{
-//                    Toast.makeText(this,"Authentication Error"+task.exception,Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//    }
-
     private fun requestPermissions() {
-
-
         Dexter.withContext(this)
             .withPermissions(
                 Manifest.permission.INTERNET,
@@ -190,18 +145,13 @@ class MainActivity : AppCompatActivity() {
             )
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
-
                 }
-
                 override fun onPermissionRationaleShouldBeShown(
                     p0: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
                     token: PermissionToken?
                 ) {
                     token?.continuePermissionRequest()
                 }
-
             }).check()
-
     }
-
 }

@@ -43,7 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:weightSum="2">
+                            android:weightSum="3">
 
                                 <TextView
                                     android:id="@+id/tvInstructorFirstname"
@@ -51,56 +51,24 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="5dp"
-                                    android:layout_weight=".6"
+                                    android:layout_weight="0.75"
                                     android:text="Name"
                                     android:textColor="@color/black"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/tvInstructorAge"
+                                    android:id="@+id/tvLocation"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="5dp"
-                                    android:layout_weight="1.4"
+                                    android:layout_weight="1.05"
                                     android:gravity="end"
-                                    android:text="age"
+                                    android:text="Location"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
-
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                                <TextView
-                                    android:id="@+id/cartype"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="5dp"
-                                    android:layout_weight=".8"
-                                    android:text="Car type"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/transmission"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="0dp"
-                                    android:layout_weight="1"
-                                    android:gravity="start"
-                                    android:text="Transmission"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
 
                                 <TextView
                                     android:id="@+id/price"
@@ -112,7 +80,65 @@
                                     android:gravity="end"
                                     android:text="Price"
                                     android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                                <TextView
+                                    android:id="@+id/cartype"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="0.85"
+                                    android:text="Car"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/transmission"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="2dp"
+                                    android:layout_weight="0.95"
+                                    android:gravity="start"
+                                    android:text="Automatic"
+                                    android:textColor="@color/black"
                                     android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/gender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:layout_weight="1.05"
+                                    android:gravity="start"
+                                    android:text="Female"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/tvInstructorAge"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_weight="1.1"
+                                    android:gravity="end"
+                                    android:text="Age"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
                         </LinearLayout>
 
                         <TextView

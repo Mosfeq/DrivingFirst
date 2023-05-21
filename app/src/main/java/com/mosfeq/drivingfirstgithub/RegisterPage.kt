@@ -25,6 +25,7 @@ import com.google.firebase.storage.StorageReference
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageBinding
 import com.mosfeq.drivingfirstgithub.learner.Learner
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
+import java.io.IOException
 import java.util.Objects
 import java.util.UUID
 
@@ -97,10 +98,6 @@ class RegisterPage : AppCompatActivity() {
                     binding.etCreateConfirmPassword.text.clear()
                 } else {
                     Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-                    Log.e(
-                        "Match",
-                        "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}"
-                    )
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
@@ -131,7 +128,7 @@ class RegisterPage : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Register Failed" + task.exception, Toast.LENGTH_SHORT)
                 .show()
-            Log.e("RegisterActivity", "Failed: ${task.exception}")
+//            Log.e("RegisterActivity", "Failed: ${task.exception}")
         }
     }
 }
@@ -182,6 +179,21 @@ class RegisterPage : AppCompatActivity() {
             val progresspercent: Double =
                 100.00 * snapshot.bytesTransferred / snapshot.totalByteCount
             pdd!!.setMessage("Percentage: " + progresspercent.toInt() + "%")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            selectedImage = data.data
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImage)
+                Toast.makeText(this@RegisterPage, "Image has been selected", Toast.LENGTH_SHORT)
+                    .show()
+                binding.addImage.setImageBitmap(bitmap)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
     }
 }

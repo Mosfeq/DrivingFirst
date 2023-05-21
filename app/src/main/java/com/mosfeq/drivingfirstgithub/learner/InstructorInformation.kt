@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorInformationBinding
 import com.mosfeq.drivingfirstgithub.instructor.Instructor
@@ -24,8 +25,15 @@ import com.mosfeq.drivingfirstgithub.instructor.Instructor
 class InstructorInformation: Fragment(R.layout.fragment_instructor_information) {
 
     var ref: DatabaseReference? = null
+    var rep: String = ""
     var pricePerHour: String = ""
-    var instructor: String = ""
+    var instructorEmail: String = ""
+    var instructorName: String = ""
+    var learnerName: String = ""
+    var learnerUri: String = ""
+    var instructorUri: String = ""
+    private lateinit var dbLearner: DatabaseReference
+
     private lateinit var binding: FragmentInstructorInformationBinding
     private val args: InstructorInformationArgs by navArgs()
 
@@ -37,11 +45,13 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         val db = FirebaseFirestore.getInstance()
 //        val uid = auth.currentUser?.uid!!
         val uid = args.uid
+        rep = Preference.readString(requireActivity(), "email").toString()
         val a = uid!!.replace(".", "%")
 
         ref = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Instructors").child("Users").child(a)
 
+        getLearnerData()
         ref!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -55,8 +65,10 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                     binding.pricePerHour.text = snapshot.child("pricePerLesson").getValue(String::class.java)
                     binding.description.text = snapshot.child("description").getValue(String::class.java)
                     Glide.with(binding.img1).load(snapshot.child("uri").getValue(String::class.java)).into(binding.img1)
-                    instructor = snapshot.child("name").getValue(String::class.java).toString()
+                    instructorName = snapshot.child("name").getValue(String::class.java).toString()
+                    instructorEmail = snapshot.child("email").getValue(String::class.java).toString()
                     pricePerHour = snapshot.child("pricePerLesson").getValue(String::class.java).toString()
+                    instructorUri = snapshot.child("uri").getValue(String::class.java).toString()
                 }
             }
 
@@ -68,10 +80,30 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         binding.booking.setOnClickListener {
             val intent = Intent(requireActivity(), BookingPage::class.java)
             intent.putExtra("price",pricePerHour)
-            intent.putExtra("name",instructor)
+            intent.putExtra("name",instructorEmail)
+            intent.putExtra("instName", instructorName)
+            intent.putExtra("instUri", instructorUri)
+            intent.putExtra("lname", learnerName)
+            intent.putExtra("luri", learnerUri)
             startActivity(intent)
         }
 
+    }
+    private fun getLearnerData() {
+        dbLearner =
+            FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Learners").child("Users").child(rep.replace(".", "%"))
+
+        dbLearner!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                learnerName = snapshot.child("name").getValue(String::class.java).toString()
+                learnerUri = snapshot.child("uri").getValue(String::class.java).toString()
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
     override fun onCreateView(

@@ -11,15 +11,12 @@ object Preference {
         return context
             .getSharedPreferences(PREF_NAME, MODE)
     }
-
     private fun getEditor(context: Context): SharedPreferences.Editor {
         return getPreferences(context).edit()
     }
-
     fun readString(context: Context, key: String?): String? {
         return getPreferences(context).getString(key, "")
     }
-
     fun writeString(context: Context, key: String, value: String?): String {
         getEditor(context).putString(key, value).apply()
         return key
