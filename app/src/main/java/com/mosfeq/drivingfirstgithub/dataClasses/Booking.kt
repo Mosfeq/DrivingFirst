@@ -4,13 +4,13 @@ data class Booking(
     var pricePerLesson: String? = null,
     var email: String? = null,
     var instructorName: String? = null,
-    var instructorEmail: String? = null,
+    var emailInstructor: String? = null,
     var date: String? = null,
     var time: String? = null,
-    var instructorUri: String? = null,
+    var uriInstructor: String? = null,
 
-    var learnerName: String? = null,
-    var learnerUri: String? = null,
+    var learnName: String? = null,
+    var uriLearn: String? = null,
 
     var dateTime: String? = null,
     var feedback: String? = null,

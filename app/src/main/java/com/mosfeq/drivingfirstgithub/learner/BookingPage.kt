@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
@@ -14,6 +15,7 @@ import com.mosfeq.drivingfirstgithub.databinding.BookingPageBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 import java.util.Random
 
@@ -34,11 +36,12 @@ class BookingPage: AppCompatActivity() {
         supportActionBar?.hide()
 
         intent = intent
+
+        binding.instructorName.text = "Instructor Name: ${intent.getStringExtra("instructorName")}"
+        binding.instructorPrice.text = "Price Per Hour: £${intent.getStringExtra("price")}"
+
         userEmailID = Preference.readString(this@BookingPage, "email").toString().replace(".", "%").trim()
         userEmail = Preference.readString(this@BookingPage, "email").toString()
-
-        binding.instructorName.text = "Instructor Name: ${intent.getStringExtra("name")}"
-        binding.instructorPrice.text = "Price Per Hour: £${intent.getStringExtra("price")}"
 
         binding.setDate.setOnClickListener() {
             val calender = Calendar.getInstance()
@@ -47,7 +50,7 @@ class BookingPage: AppCompatActivity() {
             val mDay = calender[Calendar.DAY_OF_MONTH]
 
             val mDateSetListener = OnDateSetListener { view, year, month, day ->
-                    datePicked = day.toString() + " " + (month + 1).toString() + ", " + year.toString()
+                    datePicked = (month + 1).toString() + " " + day + ", " + year
                     Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
                     binding.dateTime.text = "$datePicked - $timePicked"
                     datetimepicked = datePicked + timePicked
@@ -81,26 +84,26 @@ class BookingPage: AppCompatActivity() {
             mTimePicker.show()
         }
 
-        binding.booking.setOnClickListener(){
-            val calendar = Calendar.getInstance().time
-            val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val currentDate = df.format(calendar)
-            val selectedDate: String = datePicked
-            booking(currentDate, selectedDate)
-//            if(datePicked.isNotEmpty() && timePicked.isNotEmpty()){
-//                booking()
-//                Toast.makeText(this,"Lesson Booked",Toast.LENGTH_LONG).show()
-//            }
-//            else {
-//                Toast.makeText(this,"Select Date & Time",Toast.LENGTH_LONG).show()
-//            }
-        }
-    }
-
-    private fun booking(currentDate: String, selectedDate: String): Int{
         db = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("booking")
 
+        binding.booking.setOnClickListener(){
+            val calendar = Calendar.getInstance().time
+            Log.e("New Test", "Time: $calendar")
+            val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val currentDate = df.format(calendar)
+            val selectedDate: String = newDateFormat(datePicked)
+            booking(currentDate, selectedDate)
+        }
+    }
+    private fun newDateFormat(datePicked: String): String {
+        val currentDateFormat = SimpleDateFormat("MM dd, yyyy")
+        val date: Date = currentDateFormat.parse(datePicked)
+        val newDateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val newDate: String = newDateFormat.format(date)
+        return newDate
+    }
+    private fun booking(currentDate: String, selectedDate: String): Int{
         val bookingID = (Random().nextInt(900000) + 100000).toString()
         val comparedDate: Int = currentDate.compareTo(selectedDate)
 

@@ -35,7 +35,7 @@ class TimetableAdapter(
             holder.feedback.text = currentItem.feedback.toString()
         }
         holder.price.text = "£" + currentItem.pricePerLesson.toString() + "/H"
-        Glide.with(holder.image).load(timetableList[position].instructorUri).into(holder.image)
+        Glide.with(holder.image).load(timetableList[position].uriInstructor).into(holder.image)
 
     }
 

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -54,12 +55,11 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         ref!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    Log.e("New Test", "Working")
                     binding.name.text = snapshot.child("name").getValue(String::class.java)
                     binding.gender.text = snapshot.child("gender").getValue(String::class.java)
                     binding.carType.text = snapshot.child("carType").getValue(String::class.java)
                     binding.phoneNo.text = snapshot.child("phone").getValue(String::class.java)
-                    binding.mtype.text = snapshot.child("minformation").getValue(String::class.java)
+                    binding.transmission.text = snapshot.child("transmission").getValue(String::class.java)
                     binding.Email.text = snapshot.child("email").getValue(String::class.java)
                     binding.pricePerHour.text = snapshot.child("pricePerLesson").getValue(String::class.java)
                     binding.description.text = snapshot.child("description").getValue(String::class.java)
@@ -77,16 +77,19 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         })
 
         binding.booking.setOnClickListener {
-            val intent = Intent(requireActivity(), BookingPage::class.java)
-            intent.putExtra("price",pricePerHour)
-            intent.putExtra("instructorEmail",instructorEmail)
-            intent.putExtra("instructorName", instructorName)
-            intent.putExtra("instructorUri", instructorUri)
-            intent.putExtra("learnerName", learnerName)
-            intent.putExtra("learnerUri", learnerUri)
-            startActivity(intent)
+            if (Preference.readString(requireActivity(), "email") == "") {
+                Toast.makeText(requireActivity(), "Sign in required", Toast.LENGTH_LONG).show()
+            }else {
+                val intent = Intent(requireActivity(), BookingPage::class.java)
+                intent.putExtra("price", pricePerHour)
+                intent.putExtra("instructorEmail", instructorEmail)
+                intent.putExtra("instructorName", instructorName)
+                intent.putExtra("instructorUri", instructorUri)
+                intent.putExtra("learnerName", learnerName)
+                intent.putExtra("learnerUri", learnerUri)
+                startActivity(intent)
+            }
         }
-
     }
     private fun getLearnerData() {
         dbLearner =
