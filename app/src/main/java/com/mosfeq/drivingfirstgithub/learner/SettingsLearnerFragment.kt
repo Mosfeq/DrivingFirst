@@ -30,7 +30,8 @@ class SettingsLearnerFragment: Fragment(R.layout.fragment_settings_learner) {
         }
 
         btnUpdate.setOnClickListener() {
-
+            val action = SettingsLearnerFragmentDirections.actionSettingsLearnerFragmentToProfilePage()
+            findNavController().navigate(action)
         }
     }
 }

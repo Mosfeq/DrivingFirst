@@ -28,7 +28,11 @@
         android:id="@+id/settingsLearnerFragment"
         android:name="com.mosfeq.drivingfirstgithub.learner.SettingsLearnerFragment"
         android:label="fragment_settings_learner"
-        tools:layout="@layout/fragment_settings_learner" />
+        tools:layout="@layout/fragment_settings_learner" >
+        <action
+            android:id="@+id/action_settingsLearnerFragment_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/instructorInformation"
         android:name="com.mosfeq.drivingfirstgithub.learner.InstructorInformation"
@@ -38,5 +42,14 @@
             android:name="uid"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.mosfeq.drivingfirstgithub.learner.ProfilePage"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" >
+        <action
+            android:id="@+id/action_profilePage_to_settingsLearnerFragment"
+            app:destination="@id/settingsLearnerFragment" />
     </fragment>
 </navigation>
