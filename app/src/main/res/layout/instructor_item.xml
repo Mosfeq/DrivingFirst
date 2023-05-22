@@ -43,6 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            android:layout_marginBottom="2dp"
                             android:weightSum="2">
 
                                 <TextView
@@ -88,7 +89,7 @@
                                     android:gravity="start"
                                     android:text="Automatic"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="13sp"/>
 
                                 <TextView
                                     android:id="@+id/gender"
@@ -100,7 +101,7 @@
                                     android:gravity="center"
                                     android:text="Female"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="13sp"/>
 
                                 <TextView
                                     android:id="@+id/price"
@@ -111,8 +112,7 @@
                                     android:layout_weight="1"
                                     android:gravity="end"
                                     android:text="Price"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textColor="@color/black" />
 
                         </LinearLayout>
 
@@ -123,7 +123,7 @@
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
                             android:layout_weight="1"
-                            android:gravity="start"
+                            android:gravity="center_vertical"
                             android:text="Marketing Text"
                             android:maxLines="2"
                             android:textColor="@color/black"

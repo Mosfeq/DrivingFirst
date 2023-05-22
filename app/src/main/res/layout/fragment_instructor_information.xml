@@ -19,8 +19,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:background="@drawable/dottedcircle"
                 android:padding="2dp"
@@ -42,14 +42,19 @@
                 android:layout_height="match_parent"
                 android:weightSum="2"
                 android:orientation="horizontal"
-                android:layout_margin="13dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="0.7">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.2"
-                    android:layout_margin="13dp"
+                    android:layout_weight="1.22"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="13dp"
                     android:orientation="vertical"
                     android:weightSum="7">
 
@@ -57,10 +62,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:text="Name"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -69,9 +74,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Car Model"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -80,9 +85,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Transmission"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -91,9 +96,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Gender"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -101,10 +106,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Phone No"
-                        android:gravity="start"
+                        android:text="Phone"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -112,10 +117,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Email Adress"
+                        android:text="Email"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:gravity="start"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical"
                         android:textStyle="bold">
                     </TextView>
 
@@ -123,10 +128,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Price Per Hour"
+                        android:text="Hourly Price"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:gravity="start"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical"
                         android:textStyle="bold">
                     </TextView>
 
@@ -135,8 +140,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.75"
-                    android:layout_margin="13dp"
+                    android:layout_weight="0.7"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="13dp"
                     android:orientation="vertical"
                     android:weightSum="7">
 
@@ -147,19 +155,19 @@
                         android:layout_weight="1"
                         android:text="Jack"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:gravity="start">
+                        android:textSize="16sp"
+                        android:gravity="center_vertical">
                     </TextView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Toyota"
+                        android:text="Toyota Prius"
                         android:id="@+id/carType"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
+                        android:textSize="16sp">
                     </TextView>
 
                     <TextView
@@ -168,10 +176,9 @@
                         android:layout_weight="1"
                         android:text="Automatic"
                         android:id="@+id/transmission"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
-
+                        android:textSize="16sp">
                     </TextView>
 
                     <TextView
@@ -179,10 +186,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Male"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:id="@+id/gender"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
+                        android:textSize="16sp">
                     </TextView>
 
                     <TextView
@@ -190,10 +197,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="073848273822"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:id="@+id/phoneNo"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
+                        android:textSize="16sp">
                     </TextView>
 
                     <TextView
@@ -201,10 +208,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="jack29@gmail.com"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:id="@+id/Email"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
+                        android:textSize="16sp">
                     </TextView>
 
                     <TextView
@@ -212,10 +219,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="25"
-                        android:gravity="start"
+                        android:gravity="center_vertical"
                         android:id="@+id/pricePerHour"
                         android:textColor="@color/black"
-                        android:textSize="18sp">
+                        android:textSize="16sp">
                     </TextView>
 
                 </LinearLayout>
@@ -225,14 +232,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="26dp"
+                android:layout_margin="20dp"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="Description :"
-                    android:textSize="20sp"
+                    android:text="Marketing Text"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_height="wrap_content">
@@ -240,11 +247,11 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_margin="7dp"
+                    android:layout_marginTop="5dp"
                     android:justificationMode="inter_word"
                     android:textColor="@color/black"
                     android:id="@+id/description"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:text="Description Text"
                     android:layout_height="wrap_content">
                 </TextView>
@@ -256,27 +263,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_weight="1.3">
 
             <Button
-                android:layout_width="130dp"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
                 android:text="Message"
                 android:layout_margin="7dp"
                 android:id="@+id/message"
-                android:textSize="10sp"
-                android:layout_height="wrap_content">
+                android:textSize="10sp">
             </Button>
 
             <Button
-                android:layout_width="130dp"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
                 android:text="Book Lesson"
                 android:textSize="10sp"
                 android:layout_margin="7dp"
-                android:id="@+id/booking"
-                android:layout_height="wrap_content">
+                android:id="@+id/booking">
             </Button>
 
         </LinearLayout>

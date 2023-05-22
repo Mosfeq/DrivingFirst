@@ -104,7 +104,7 @@
                 android:id="@+id/btn_Login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Logiin"
+                android:text="Login"
                 android:textSize="15sp"
                 android:layout_marginLeft="10dp"
                 android:paddingRight="30dp"

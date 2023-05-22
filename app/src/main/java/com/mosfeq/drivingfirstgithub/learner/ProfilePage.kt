@@ -76,7 +76,6 @@ class ProfilePage : Fragment(R.layout.fragment_profile_page) {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, PICK_IMAGE)
         }
-
     }
 
     private fun getUserData() {
