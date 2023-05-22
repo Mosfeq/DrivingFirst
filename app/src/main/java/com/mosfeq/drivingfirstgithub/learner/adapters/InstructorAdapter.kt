@@ -43,10 +43,9 @@ class InstructorAdapter(
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
         val currentItem = instructorList[position]
         holder.name.text = currentItem.name
-        holder.car.text = currentItem.carType
         holder.location.text = currentItem.location
         holder.gender.text = currentItem.gender
-        holder.age.text = currentItem.age.toString() + "Y"
+//        holder.age.text = currentItem.age.toString() + "Y"
         holder.price.text = "£" + currentItem.pricePerLesson.toString() + "/H"
         holder.description.text = currentItem.description
         holder.transmission.text = currentItem.transmission
@@ -71,10 +70,8 @@ class InstructorAdapter(
         val name: TextView = itemView.findViewById(R.id.tvInstructorFirstname)
         val location: TextView = itemView.findViewById(R.id.tvLocation)
         val gender: TextView = itemView.findViewById(R.id.gender)
-        val age: TextView = itemView.findViewById(R.id.tvInstructorAge)
         val price: TextView = itemView.findViewById(R.id.price)
         val description: TextView = itemView.findViewById(R.id.description)
-        val car: TextView = itemView.findViewById(R.id.cartype)
         val transmission: TextView = itemView.findViewById(R.id.transmission)
         val image: CircleImageView = itemView.findViewById(R.id.img1)
 

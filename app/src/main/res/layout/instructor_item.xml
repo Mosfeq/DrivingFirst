@@ -43,7 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:weightSum="3">
+                            android:weightSum="2">
 
                                 <TextView
                                     android:id="@+id/tvInstructorFirstname"
@@ -51,7 +51,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="5dp"
-                                    android:layout_weight="0.75"
+                                    android:layout_weight="0.8"
                                     android:text="Name"
                                     android:textColor="@color/black"
                                     android:textSize="18sp"
@@ -63,45 +63,20 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="5dp"
-                                    android:layout_weight="1.05"
+                                    android:layout_weight="1.2"
                                     android:gravity="end"
                                     android:text="Location"
                                     android:textColor="@color/black"
-                                    android:textSize="15sp"
+                                    android:textSize="18sp"
                                     android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/price"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="5dp"
-                                    android:layout_weight="1.2"
-                                    android:gravity="end"
-                                    android:text="Price"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
-
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:weightSum="4">
-
-                                <TextView
-                                    android:id="@+id/cartype"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="5dp"
-                                    android:layout_weight="0.85"
-                                    android:text="Car"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
+                            android:weightSum="3">
 
                                 <TextView
                                     android:id="@+id/transmission"
@@ -109,7 +84,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="2dp"
-                                    android:layout_weight="0.95"
+                                    android:layout_weight="1"
                                     android:gravity="start"
                                     android:text="Automatic"
                                     android:textColor="@color/black"
@@ -121,21 +96,21 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="0dp"
-                                    android:layout_weight="1.05"
-                                    android:gravity="start"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
                                     android:text="Female"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 
                                 <TextView
-                                    android:id="@+id/tvInstructorAge"
+                                    android:id="@+id/price"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:layout_weight="1.1"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
                                     android:gravity="end"
-                                    android:text="Age"
+                                    android:text="Price"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 
@@ -152,7 +127,7 @@
                             android:text="Marketing Text"
                             android:maxLines="2"
                             android:textColor="@color/black"
-                            android:textSize="15sp" />
+                            android:textSize="14sp" />
                 </LinearLayout>
 
         </LinearLayout>

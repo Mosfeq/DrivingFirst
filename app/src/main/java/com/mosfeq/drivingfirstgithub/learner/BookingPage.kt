@@ -96,14 +96,7 @@ class BookingPage: AppCompatActivity() {
             booking(currentDate, selectedDate)
         }
     }
-    private fun newDateFormat(datePicked: String): String {
-        val currentDateFormat = SimpleDateFormat("MM dd, yyyy")
-        val date: Date = currentDateFormat.parse(datePicked)
-        val newDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val newDate: String = newDateFormat.format(date)
-        return newDate
-    }
-    private fun booking(currentDate: String, selectedDate: String): Int{
+    fun booking(currentDate: String, selectedDate: String): Int{
         val bookingID = (Random().nextInt(900000) + 100000).toString()
         val comparedDate: Int = currentDate.compareTo(selectedDate)
 
@@ -115,7 +108,7 @@ class BookingPage: AppCompatActivity() {
         } else if (comparedDate == 0){
             // Both dates are equal
             if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
-                db.child(userEmail).child(bookingID).setValue(
+                db.child(userEmailID).child(bookingID).setValue(
                     Booking(
                         intent.getStringExtra("price").toString(),
                         userEmail,
@@ -139,7 +132,7 @@ class BookingPage: AppCompatActivity() {
         }
         //Current date is behind of selected date
         if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
-            db.child(userEmail).child(bookingID).setValue(
+            db.child(userEmailID).child(bookingID).setValue(
                 Booking(
                     intent.getStringExtra("price").toString(),
                     userEmail,
@@ -160,6 +153,13 @@ class BookingPage: AppCompatActivity() {
             Toast.makeText(this, "Date or Time required!", Toast.LENGTH_LONG).show()
         }
         return -1
+    }
+    fun newDateFormat(datePicked: String): String {
+        val currentDateFormat = SimpleDateFormat("MM dd, yyyy")
+        val date: Date = currentDateFormat.parse(datePicked)
+        val newDateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val newDate: String = newDateFormat.format(date)
+        return newDate
     }
 
 }

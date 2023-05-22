@@ -7,10 +7,27 @@
     android:gravity="center"
     tools:context=".learner.SettingsLearnerFragment">
 
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Settings Learner" />
+    <Button
+        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_marginBottom="10dp"
+        android:text="Profile"
+        android:id="@+id/updateProfile">
+    </Button>
+
+    <Button
+        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_marginBottom="10dp"
+        android:text="Terms of Service"
+        android:id="@+id/termsOfService">
+    </Button>
+
+    <Button
+        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:text="Logout"
+        android:id="@+id/logout">
+    </Button>
 
 </LinearLayout>

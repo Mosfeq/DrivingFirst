@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var database: DatabaseReference
 
+    lateinit var signInCheck: String
+    lateinit var users: String
+    lateinit var role: String
+
     private lateinit var dbLearner: DatabaseReference
     var roleCheck: Boolean = false
 
@@ -41,17 +45,20 @@ class MainActivity : AppCompatActivity() {
         binding.etEnterEmail.text.clear()
         binding.etEnterPassword.text.clear()
 
-//        val drawable = getDrawable(R.drawable.button_hover_pressed)
-//
-//        btn_Login.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null)
-
-//        binding.btnLoginInstructor.setOnClickListener {
-//            if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
-//                signInInstructor()
-//            }else{
-//                Toast.makeText(this,"Information required", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        signInCheck = Preference.readString(this, "email").toString()
+        users = Preference.readString(this, "role").toString()
+        if (signInCheck != "") {
+            if (users != "") {
+                if (users == "learner") {
+                    val intent = Intent(this, LearnerFragmentManager::class.java)
+                    startActivity(intent)
+                }
+                if (users == "instructor") {
+                    val intent = Intent(this, InstructorFragmentManager::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
 
         binding.btnLogin.setOnClickListener {
             if (binding.etEnterEmail.text.trim().isNotEmpty() && binding.etEnterPassword.text.trim().isNotEmpty()){
