@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub.learner
+package com.mosfeq.drivingfirstgithub.learner.adapters
 
 import android.view.LayoutInflater
 import android.view.View

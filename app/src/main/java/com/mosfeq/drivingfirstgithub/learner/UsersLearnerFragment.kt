@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
+import com.mosfeq.drivingfirstgithub.learner.adapters.InstructorUsersAdapter
 
 class UsersLearnerFragment: Fragment(R.layout.fragment_users_learner) {
 
