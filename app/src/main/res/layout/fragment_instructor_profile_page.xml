@@ -4,16 +4,13 @@
     android:id="@+id/linlay_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue"
-    android:orientation="vertical"
-    tools:context=".RegisterPageAsInstructor">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
-        android:padding="35dp">
+        android:padding="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,11 +31,10 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
                     android:layout_weight="1"
-                    android:text="Register \n    As \n Instructor"
-                    android:textColor="@color/white"
+                    android:text="Update Profile"
+                    android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
-
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/addImage"
@@ -50,190 +46,159 @@
                     android:padding="2dp"
                     android:src="@drawable/profilepic" />
             </LinearLayout>
-        </LinearLayout>
 
+        </LinearLayout>
 
         <EditText
             android:id="@+id/et_createName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Full Name"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Gender"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"/>
 
         <EditText
             android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Age"
             android:inputType="number"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/pnumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Phone Number"
             android:inputType="number"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Price per lesson"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
-            android:id="@+id/carModel"
+            android:id="@+id/cartype"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
-            android:hint="Car Model"
+            android:background="#FFE6E1E4"
+            android:hint="Car type"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
-            android:id="@+id/transmission"
+            android:id="@+id/ttype"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Transmission"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Location"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
-            android:hint="Marketing Text"
+            android:background="#FFE6E1E4"
+            android:hint="Description"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
-
-        <EditText
+        <TextView
             android:id="@+id/et_createEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
+            android:background="#FFE6E1E4"
             android:hint="Email"
             android:inputType="text"
+            android:textSize="18sp"
             android:maxLines="1"
             android:padding="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <EditText
-            android:id="@+id/et_createPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/edittext_features"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:padding="15dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <EditText
-            android:id="@+id/et_createConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="35dp"
-            android:background="@drawable/edittext_features"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:padding="15dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -243,45 +208,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_RegisterAsInstructor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btn_update"
+                android:layout_height="50dp"
+                android:layout_width="140dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/button_features"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Register"
+                android:text="Update"
                 android:textColor="@color/dark_blue" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linlay_login_here"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Already have an account? "
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_changeToLoginPage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Login Here"
-                android:textAlignment="center"
-                android:textColor="@color/turquoise"
-                android:textSize="17sp" />
-
-        </LinearLayout>
-
-
     </LinearLayout>
+
 </ScrollView>

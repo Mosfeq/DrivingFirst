@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/instructor_navgraph"
-    app:startDestination="@id/searchInstructorFragment">
+    app:startDestination="@id/timetableFragment">
 
-    <fragment
-        android:id="@+id/searchInstructorFragment"
-        android:name="com.mosfeq.drivingfirstgithub.instructor.SearchLearnerFragment"
-        android:label="fragment_search_learner"
-        tools:layout="@layout/fragment_search_learner" />
     <fragment
         android:id="@+id/usersFragment"
         android:name="com.mosfeq.drivingfirstgithub.instructor.UsersFragment"
@@ -24,5 +19,14 @@
         android:id="@+id/settingsFragment"
         android:name="com.mosfeq.drivingfirstgithub.instructor.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_instructorProfilePage"
+            app:destination="@id/instructorProfilePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructorProfilePage"
+        android:name="com.mosfeq.drivingfirstgithub.instructor.InstructorProfilePage"
+        android:label="fragment_instructor_profile_page"
+        tools:layout="@layout/fragment_instructor_profile_page" />
 </navigation>

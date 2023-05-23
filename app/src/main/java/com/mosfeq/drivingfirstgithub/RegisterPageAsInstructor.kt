@@ -74,13 +74,12 @@ class RegisterPageAsInstructor: AppCompatActivity() {
         }
 
         binding.btnRegisterAsInstructor.setOnClickListener {
-
             if (binding.etCreateEmail.text.trim().isNotEmpty()
                 && binding.etCreatePassword.text.trim().isNotEmpty()
                 && binding.age.text.trim().isNotEmpty()
                 && binding.gender.text.trim().isNotEmpty()
                 && binding.pnumber.text.trim().isNotEmpty()
-                && binding.ttype.text.trim().isNotEmpty()
+                && binding.transmission.text.trim().isNotEmpty()
                 && binding.price.text.trim().isNotEmpty()
                 && binding.location.text.trim().isNotEmpty()
                 && binding.description.text.trim().isNotEmpty()
@@ -96,22 +95,15 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                     binding.etCreateConfirmPassword.text.clear()
                 } else {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
-//                    Log.e(
-//                        "Match",
-//                        "CP = ${binding.etCreatePassword}, CCP = ${binding.etCreateConfirmPassword}"
-//                    )
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
             }
-
         }
-
 
         binding.tvChangeToLoginPage.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
         }
     }
 
@@ -150,8 +142,8 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                             binding.gender.text.toString(),
                             binding.pnumber.text.toString(),
                             binding.price.text.toString(),
-                            binding.cartype.text.toString(),
-                            binding.ttype.text.toString(),
+                            binding.carModel.text.toString(),
+                            binding.transmission.text.toString(),
                             binding.location.text.toString(),
                             getEmail,
                             getName,
