@@ -3,13 +3,13 @@ package com.mosfeq.drivingfirstgithub.learner.messaging
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.mosfeq.drivingfirstgithub.FirebaseQueryWorkChat
+import com.mosfeq.drivingfirstgithub.FirebaseQuery
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 class UserGroupViewModel: ViewModel() {
 
-    private val firebaseQuery = FirebaseQueryWorkChat()
+    private val firebaseQuery = FirebaseQuery()
 
     @ExperimentalCoroutinesApi
     val groups = firebaseQuery.getGroups().asLiveData()
