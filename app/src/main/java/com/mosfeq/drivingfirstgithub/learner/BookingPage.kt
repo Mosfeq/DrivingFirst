@@ -51,7 +51,7 @@ class BookingPage: AppCompatActivity() {
 
             val mDateSetListener = OnDateSetListener { view, year, month, day ->
                     datePicked = (month + 1).toString() + " " + day + ", " + year
-                    Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
                     binding.dateTime.text = "$datePicked - $timePicked"
                     datetimepicked = datePicked + timePicked
                     try {
@@ -88,6 +88,13 @@ class BookingPage: AppCompatActivity() {
             .getReference("booking")
 
         binding.booking.setOnClickListener(){
+//            if (datePicked.isEmpty() && timePicked.isEmpty()){
+//                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
+//            } else if(datePicked.isEmpty() || timePicked.isEmpty()){
+//                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
+//            } else{
+//
+//            }
             val calendar = Calendar.getInstance().time
             Log.e("New Test", "Time: $calendar")
             val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
