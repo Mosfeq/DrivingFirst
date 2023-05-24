@@ -11,8 +11,8 @@
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
         <action
-            android:id="@+id/action_usersFragment_to_chatInstructorFragment"
-            app:destination="@id/chatInstructorFragment" />
+            android:id="@+id/action_usersFragment_to_chatFragment2"
+            app:destination="@id/chatFragment2" />
     </fragment>
     <fragment
         android:id="@+id/timetableFragment"
@@ -34,8 +34,8 @@
         android:label="fragment_instructor_profile_page"
         tools:layout="@layout/fragment_instructor_profile_page" />
     <fragment
-        android:id="@+id/chatInstructorFragment"
-        android:name="com.mosfeq.drivingfirstgithub.instructor.messaging.chat.ChatInstructorFragment"
-        android:label="fragment_chat_instructor"
-        tools:layout="@layout/fragment_chat_instructor" />
+        android:id="@+id/chatFragment2"
+        android:name="com.mosfeq.drivingfirstgithub.chatForBoth.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

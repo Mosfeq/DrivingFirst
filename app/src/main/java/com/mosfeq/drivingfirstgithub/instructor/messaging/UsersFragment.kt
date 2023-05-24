@@ -77,9 +77,8 @@ class UsersFragment : Fragment(){
         userGroupInstAdapter.onClickHandler={
             val bundle=Bundle().apply {
                 putParcelable("group",it)
-                putString("labelName",it.name)
             }
-            findNavController().navigate(R.id.action_usersFragment_to_chatInstructorFragment, bundle)
+            findNavController().navigate(R.id.action_usersFragment_to_chatFragment2, bundle)
         }
 
     }

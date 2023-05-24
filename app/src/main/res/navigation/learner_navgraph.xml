@@ -64,7 +64,13 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.mosfeq.drivingfirstgithub.learner.messaging.chat.ChatFragment"
+        android:name="com.mosfeq.drivingfirstgithub.chatForBoth.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="group"
+            app:argType="com.mosfeq.drivingfirstgithub.dataClasses.UserGroup"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

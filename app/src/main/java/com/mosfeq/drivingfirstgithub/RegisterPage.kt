@@ -36,7 +36,7 @@ class RegisterPage : AppCompatActivity() {
     private lateinit var dbInstructor: DatabaseReference
     private lateinit var dbLearner: DatabaseReference
     private lateinit var dbFirestore: FirebaseFirestore
-    private var firebaseQuery: FirebaseQueryWorkChat = FirebaseQueryWorkChat()
+    private var firebaseQuery: FirebaseQuery = FirebaseQuery()
 
     var pdd: ProgressDialog? = null
     var storageReference: StorageReference? = null
