@@ -1,14 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
     tools:context=".PrivacyPolicyFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Privacy Policy"
-        android:textSize="30sp"/>
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Privacy Policy"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/tos1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This Privacy Policy outlines how we collect, use, and protect your personal information when you use our application(Driving First)."
+            android:layout_below="@+id/title"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Information We Collect"
+            android:layout_below="@+id/tos1"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. Personal Information: When you create an account or use certain features of the Application, we may collect personal information such as your name, email address, contact details, and other relevant information."
+            android:layout_below="@+id/tos2"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos3i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. Usage Information: We may collect information about your interactions with the Application, including your preferences, settings, and activities."
+            android:layout_below="@+id/tos3"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Use of Information"
+            android:layout_below="@+id/tos3i"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. Provision of Services: We use the collected information to provide and improve the functionality of the Application, including facilitating user registrations, bookings, and communication between learners and instructors."
+            android:layout_below="@+id/tos4"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. Communication: We may use your contact information to send you updates, notifications, and other relevant information about the Application and its services."
+            android:layout_below="@+id/tos5"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C. Personalization: We may use the collected information to personalize your experience within the Application, such as suggesting relevant instructors or lessons based on your preferences."
+            android:layout_below="@+id/tos6"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Data Security"
+            android:layout_below="@+id/tos7"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction."
+            android:layout_below="@+id/tos8"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. Despite our efforts, please note that no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee the absolute security of your data."
+            android:layout_below="@+id/tos9"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Data Sharing"
+            android:layout_below="@+id/tos10"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. We may share your personal information with third-party service providers that assist us in operating and maintaining the Application, subject to their compliance with applicable privacy laws."
+            android:layout_below="@+id/tos11"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. We do not sell, trade, or otherwise transfer your personal information to outside parties without your consent, except as required by law or as necessary to protect our rights, safety, or property."
+            android:layout_below="@+id/tos12"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. User Rights"
+            android:layout_below="@+id/tos13"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. You have the right to access, update, and correct your personal information stored within the Application."
+            android:layout_below="@+id/tos14"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. You may choose to delete your account and associated personal information by contacting us through the provided contact information."
+            android:layout_below="@+id/tos15"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. Changes to Privacy Policy"
+            android:layout_below="@+id/tos16"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We reserve the right to update or modify this Privacy Policy at any time. We will notify you of any material changes through the Application or other means. Your continued use of the Application after such changes constitutes your acceptance of the revised Privacy Policy."
+            android:layout_below="@+id/tos17"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tos19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By using the Application, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with any part of this Policy, please refrain from using the Application."
+            android:layout_below="@+id/tos18"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

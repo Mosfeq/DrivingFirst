@@ -24,7 +24,7 @@
             android:id="@+id/tos1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please read these Terms of Service ('Terms') carefully before using our application ('the Application'). These Terms govern your access to and use of the Application."
+            android:text="Please read these Terms of Service carefully before using our application (Driving First). These Terms govern your access to and use of the Application."
             android:layout_below="@+id/title"
             android:layout_marginBottom="20dp"
             android:textStyle="bold"

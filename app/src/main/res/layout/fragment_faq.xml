@@ -1,14 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
     tools:context=".FaqFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FAQ"
-        android:textSize="30sp"/>
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. How can I register as a learner or instructor?"
+            android:layout_below="@+id/title"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To register, simply follow the registration process. Learners can create an account to search for instructors and book lessons, while instructors can sign up to offer their lessons."
+            android:layout_below="@+id/q1"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. How can learners find instructors that match their preferences?"
+            android:layout_below="@+id/a1"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Our application provides a filtering system that allows learners to specify their preferences such as location, price per lesson, gender and transmission. By applying these filters, learners can easily find instructors that meet their specific requirements."
+            android:layout_below="@+id/q2"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/q3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. How can I book a lesson with an instructor?"
+            android:layout_below="@+id/a2"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Once you have found an instructor, you can view their profile and press the 'Book Lesson' button. Simply select a suitable time slot and book the lesson directly through the application. Please message the instructor beforehand before going ahead with the booking."
+            android:layout_below="@+id/q3"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/q4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Can instructors see their upcoming lessons?"
+            android:layout_below="@+id/a3"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes, instructors have access to a timetable within the application. They can view their scheduled lessons, including the date, time, and learner's name. This helps instructors keep track of their teaching schedule."
+            android:layout_below="@+id/q4"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/q5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. What payment methods are accepted for booking lessons?"
+            android:layout_below="@+id/a4"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We currently accept PayPal and credit/debit cards. When booking a lesson, you will be prompted to provide your preferred payment information securely through a third-party system."
+            android:layout_below="@+id/q5"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/q6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. Is my personal information secure?"
+            android:layout_below="@+id/a5"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/a6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes, we take data security seriously. We implement appropriate measures to protect your personal information and adhere to industry best practices. Please refer to our Privacy Policy for detailed information on how we handle and safeguard your data."
+            android:layout_below="@+id/q6"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+</ScrollView>
