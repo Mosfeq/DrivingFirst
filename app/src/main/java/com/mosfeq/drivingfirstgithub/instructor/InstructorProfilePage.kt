@@ -25,7 +25,6 @@ import com.google.firebase.storage.StorageReference
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorProfilePageBinding
-import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorProfilePageBindingImpl
 import java.io.IOException
 import java.util.UUID
 
@@ -111,7 +110,7 @@ class InstructorProfilePage: Fragment(R.layout.fragment_instructor_profile_page)
                 binding.cartype.setText(snapshot.child("carType").getValue(String::class.java))
                 binding.description.setText(snapshot.child("description").getValue(String::class.java))
                 binding.price.setText(snapshot.child("pricePerLesson").getValue(String::class.java))
-                binding.ttype.setText(snapshot.child("transType").getValue(String::class.java))
+                binding.ttype.setText(snapshot.child("transmission").getValue(String::class.java))
                 binding.age.setText(snapshot.child("age").getValue(String::class.java))
                 binding.location.setText(snapshot.child("location").getValue(String::class.java))
                 binding.description.setText(snapshot.child("description").getValue(String::class.java))
@@ -167,11 +166,11 @@ class InstructorProfilePage: Fragment(R.layout.fragment_instructor_profile_page)
                             "location" to location,
                             "phone" to phone,
                             "pricePerLesson" to pricePerLesson,
-                            "transType" to transmission,
+                            "transmission" to transmission,
                             "uri" to uris
                         )
                         dbLearner.updateChildren(instructor as Map<String, Any>)
-                        Toast.makeText(requireActivity(), "updated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireActivity(), "Profile Updated", Toast.LENGTH_SHORT).show()
                     })
                     pdd!!.dismiss()
                 }).addOnFailureListener(OnFailureListener {
@@ -194,10 +193,11 @@ class InstructorProfilePage: Fragment(R.layout.fragment_instructor_profile_page)
                     "location" to location,
                     "phone" to phone,
                     "pricePerLesson" to pricePerLesson,
-                    "transType" to transmission,
+                    "transmission" to transmission,
                     "uri" to uris
                 )
                 dbLearner.updateChildren(instructor as Map<String, Any>)
+                Toast.makeText(requireActivity(), "Profile Updated", Toast.LENGTH_SHORT).show()
             }
         } else {
             Toast.makeText(requireActivity(), "Sign in required!", Toast.LENGTH_SHORT).show()

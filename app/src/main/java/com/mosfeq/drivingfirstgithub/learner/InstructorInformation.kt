@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.databinding.FragmentInstructorInformationBinding
+import com.mosfeq.drivingfirstgithub.learner.messaging.UserGroupViewModel
 
 class InstructorInformation: Fragment(R.layout.fragment_instructor_information) {
 
@@ -34,6 +37,7 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
     var instructorUri: String = ""
     private lateinit var dbLearner: DatabaseReference
 
+    private val userGroupViewModel: UserGroupViewModel by viewModels()
     private lateinit var binding: FragmentInstructorInformationBinding
     private val args: InstructorInformationArgs by navArgs()
 
@@ -90,6 +94,21 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                 startActivity(intent)
             }
         }
+
+        binding.message.setOnClickListener() {
+            userGroupViewModel.addNewGroup(
+                instructorName,
+                learnerName,
+                a,
+                (Preference.readString(requireActivity(), "email").toString()),
+                instructorUri,
+                learnerUri
+            )
+//            Toast.makeText(requireActivity(), "Chat added!", Toast.LENGTH_SHORT).show()
+            val action = InstructorInformationDirections.actionInstructorInformationToUsersLearnerFragment()
+            findNavController().navigate(action)
+        }
+
     }
     private fun getLearnerData() {
         dbLearner =
@@ -115,62 +134,4 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
         binding = FragmentInstructorInformationBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-
-
-//        val name: String? = "name"
-//
-//        binding.tvfirstName.text = name
-
-//        val instructor = hashMapOf(
-//            "firstname" to "David",
-//            "lastname" to "Bale",
-//            "email" to "dbale30@gmail.com",
-//            "phoneNumber" to 447384728193,
-//            "age" to 30,
-//            "price" to 25,
-//            "gender" to "male",
-//            "marketingText" to ""
-//        )
-//
-//        db.collection("instructors")
-//            .add(instructor)
-//            .addOnSuccessListener {documentReference ->
-//                Log.d(tag, "DocumentSnapshot added with ID: ${documentReference.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.w(tag, "Error adding document", e)
-//            }
-
-//        db.collection("instructors").document(uid!!)
-//            .get()
-//            .addOnCompleteListener{ task ->
-//                if (task.isSuccessful) {
-//                    val document = task.result
-//                    if (document.exists()) {
-//                        Log.e("TestNew","Tetsign")
-//                        val firstName = document.getString("firstname")
-//                        val age = document.get("age")
-//                        binding.tvfirstName.text = firstName
-//                        Log.e("TestNew", "Here: $firstName + $age")
-//                    } else {
-//                        Log.e("TestNew","Tetsign Fail2")
-//                    }
-//                } else {
-//                    Log.e("TestNew","Tetsign Fail")
-//                    task.exception?.message?.let {
-//                        Log.e("TestNew", it)
-//                    }
-//                }
-//            }
-
-//    binding.tvAge.text = age.toString()
-//    Log.e("TestNew","$firstName/$age")
-
-    //                        Log.e("TestNew", "The document doesn't exist.")
-
-//        if (uid != null) {
-//
-//        }
-
 }

@@ -48,7 +48,8 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
         binding.rvInstructorRecyclerView.layoutManager = LinearLayoutManager(context)
         getInstructorList()
 
-        binding.searchUserOrderTv.addTextChangedListener(object : TextWatcher {
+        binding.searchUserOrderTv.addTextChangedListener(object : TextWatcher{
+            //Built in parameters, no checks for before on during typing in search filter
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {

@@ -23,6 +23,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageBinding
 import com.mosfeq.drivingfirstgithub.dataClasses.Learner
+import com.mosfeq.drivingfirstgithub.dataClasses.User
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 import java.io.IOException
 import java.util.Objects
@@ -35,6 +36,8 @@ class RegisterPage : AppCompatActivity() {
     private lateinit var dbInstructor: DatabaseReference
     private lateinit var dbLearner: DatabaseReference
     private lateinit var dbFirestore: FirebaseFirestore
+    private var firebaseQuery: FirebaseQueryWorkChat = FirebaseQueryWorkChat()
+
     var pdd: ProgressDialog? = null
     var storageReference: StorageReference? = null
     var selectedImage: Uri? = null
@@ -156,6 +159,13 @@ class RegisterPage : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 dialog.show()
+                firebaseQuery.addUserIntoFireStore(
+                    User(
+                        uid = auth.currentUser?.uid!!,
+                        profilePicUrl = uri.toString(),
+                        username = getName
+                    )
+                )
             })
             Snackbar.make(
                 findViewById(android.R.id.content),

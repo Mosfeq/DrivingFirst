@@ -16,9 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/usersLearnerFragment"
-        android:name="com.mosfeq.drivingfirstgithub.learner.UsersLearnerFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.messaging.UsersLearnerFragment"
         android:label="fragment_users_learner"
-        tools:layout="@layout/fragment_users_learner" />
+        tools:layout="@layout/fragment_users_learner" >
+        <action
+            android:id="@+id/action_usersLearnerFragment_to_searchInstructorFragment"
+            app:destination="@id/searchInstructorFragment" />
+        <action
+            android:id="@+id/action_usersLearnerFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/timetableLearnerFragment"
         android:name="com.mosfeq.drivingfirstgithub.learner.TimetableLearnerFragment"
@@ -42,6 +49,9 @@
             android:name="uid"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_instructorInformation_to_usersLearnerFragment"
+            app:destination="@id/usersLearnerFragment" />
     </fragment>
     <fragment
         android:id="@+id/profilePage"
@@ -52,4 +62,9 @@
             android:id="@+id/action_profilePage_to_settingsLearnerFragment"
             app:destination="@id/settingsLearnerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.mosfeq.drivingfirstgithub.learner.messaging.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

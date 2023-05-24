@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.mosfeq.drivingfirstgithub.instructor.UsersFragment"
+        android:name="com.mosfeq.drivingfirstgithub.instructor.messaging.UsersFragment"
         android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_usersFragment_to_chatInstructorFragment"
+            app:destination="@id/chatInstructorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/timetableFragment"
         android:name="com.mosfeq.drivingfirstgithub.instructor.TimetableFragment"
@@ -29,4 +33,9 @@
         android:name="com.mosfeq.drivingfirstgithub.instructor.InstructorProfilePage"
         android:label="fragment_instructor_profile_page"
         tools:layout="@layout/fragment_instructor_profile_page" />
+    <fragment
+        android:id="@+id/chatInstructorFragment"
+        android:name="com.mosfeq.drivingfirstgithub.instructor.messaging.chat.ChatInstructorFragment"
+        android:label="fragment_chat_instructor"
+        tools:layout="@layout/fragment_chat_instructor" />
 </navigation>
