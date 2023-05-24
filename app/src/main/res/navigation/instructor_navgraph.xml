@@ -27,6 +27,15 @@
         <action
             android:id="@+id/action_settingsFragment_to_instructorProfilePage"
             app:destination="@id/instructorProfilePage" />
+        <action
+            android:id="@+id/action_settingsFragment_to_faqFragment2"
+            app:destination="@id/faqFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_privacyPolicyFragment2"
+            app:destination="@id/privacyPolicyFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_termsOfServiceFragment2"
+            app:destination="@id/termsOfServiceFragment2" />
     </fragment>
     <fragment
         android:id="@+id/instructorProfilePage"
@@ -38,4 +47,19 @@
         android:name="com.mosfeq.drivingfirstgithub.chatForBoth.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/faqFragment2"
+        android:name="com.mosfeq.drivingfirstgithub.FaqFragment"
+        android:label="fragment_faq"
+        tools:layout="@layout/fragment_faq" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment2"
+        android:name="com.mosfeq.drivingfirstgithub.PrivacyPolicyFragment"
+        android:label="fragment_privacy_policy"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/termsOfServiceFragment2"
+        android:name="com.mosfeq.drivingfirstgithub.TermsOfServiceFragment"
+        android:label="fragment_terms_of_service"
+        tools:layout="@layout/fragment_terms_of_service" />
 </navigation>

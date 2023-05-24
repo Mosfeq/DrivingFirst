@@ -26,6 +26,22 @@
     <Button
         android:layout_height="70dp"
         android:layout_width="200dp"
+        android:layout_marginBottom="10dp"
+        android:text="Privacy Policy"
+        android:id="@+id/privacyPolicy">
+    </Button>
+
+    <Button
+        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_marginBottom="10dp"
+        android:text="FAQ"
+        android:id="@+id/faq">
+    </Button>
+
+    <Button
+        android:layout_height="70dp"
+        android:layout_width="200dp"
         android:text="Logout"
         android:id="@+id/logout">
     </Button>
