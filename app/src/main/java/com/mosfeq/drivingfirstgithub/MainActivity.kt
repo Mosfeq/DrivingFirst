@@ -77,12 +77,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ForgotPasswordPage::class.java)
             startActivity(intent)
         }
-
-        binding.tvSkip.setOnClickListener{
-            val intent = Intent(this, LearnerFragmentManager::class.java)
-            startActivity(intent)
-        }
-
     }
 
     private fun signIn(){

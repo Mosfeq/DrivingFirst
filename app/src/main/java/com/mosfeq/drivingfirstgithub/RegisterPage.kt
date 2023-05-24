@@ -62,15 +62,9 @@ class RegisterPage : AppCompatActivity() {
         dbLearner =
             FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Learners")
-//        val uid = auth.currentUser?.uid!!
-//        val clicked = false;
 
         name = binding.etCreateName.text.toString()
         email = binding.etCreateEmail.text.toString()
-
-//        val margin = LinearLayout.LayoutParams(
-//            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-//        )
 
         storageReference =
             FirebaseStorage.getInstance("gs://driving-first-github.appspot.com/").reference
@@ -88,35 +82,30 @@ class RegisterPage : AppCompatActivity() {
         binding.btnRegisterAsLearner.setOnClickListener {
 
             if (binding.etCreateEmail.text.trim().isNotEmpty() && binding.etCreatePassword.text.trim().isNotEmpty() && binding.etCreateConfirmPassword.text.trim().isNotEmpty()
-                && selectedImage != null
-            ) {
-                if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
-                    registerLearner(
-                        binding.etCreateEmail.text.toString(),
-                        binding.etCreateName.text.toString()
-                    )
-                    binding.etCreateEmail.text.clear()
-                    binding.etCreatePassword.text.clear()
-                    binding.etCreateConfirmPassword.text.clear()
-                } else {
-                    Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
+                && selectedImage != null) {
+                if (binding.etCreatePassword.text.toString().length >= 8){
+                    if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
+                        registerLearner(
+                            binding.etCreateEmail.text.toString(),
+                            binding.etCreateName.text.toString()
+                        )
+                        binding.etCreateEmail.text.clear()
+                        binding.etCreatePassword.text.clear()
+                        binding.etCreateConfirmPassword.text.clear()
+                    } else {
+                        Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
+                    }
+                }else{
+                    Toast.makeText(this, "Password length too short", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         binding.tvRegisterPageInstructor.setOnClickListener {
             val intent = Intent(this, RegisterPageAsInstructor::class.java)
             startActivity(intent)
-
-        }
-
-        binding.tvChangeToLoginPage.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-
         }
     }
     private fun registerLearner(getEmail: String, getName: String){

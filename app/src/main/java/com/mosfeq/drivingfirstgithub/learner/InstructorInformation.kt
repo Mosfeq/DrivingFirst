@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
@@ -60,6 +61,7 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     binding.name.text = snapshot.child("name").getValue(String::class.java)
+                    binding.age.text = snapshot.child("age").getValue(String::class.java)
                     binding.gender.text = snapshot.child("gender").getValue(String::class.java)
                     binding.carType.text = snapshot.child("carType").getValue(String::class.java)
                     binding.phoneNo.text = snapshot.child("phone").getValue(String::class.java)
