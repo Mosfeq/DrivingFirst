@@ -30,9 +30,25 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="paypalxo"
+                    android:scheme="com.mosfeq.drivingfirstgithub://paypalpay" />
             </intent-filter>
         </activity>
-        <activity android:name=".learner.BookingPage"></activity>
+        <activity android:name=".learner.BookingPage"
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="paypalxo"
+                    android:scheme="com.mosfeq.drivingfirstgithub://paypalpay" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RegisterPageAsInstructor"></activity>
         <activity android:name=".RegisterPage"></activity>
         <activity android:name=".ForgotPasswordPage"></activity>

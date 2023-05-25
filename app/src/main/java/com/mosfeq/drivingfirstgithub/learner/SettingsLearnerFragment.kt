@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
-import com.mosfeq.drivingfirstgithub.databinding.FragmentSettingsLearnerBinding
 
 class SettingsLearnerFragment: Fragment(R.layout.fragment_settings_learner) {
 

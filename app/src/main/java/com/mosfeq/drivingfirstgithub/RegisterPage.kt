@@ -113,13 +113,11 @@ class RegisterPage : AppCompatActivity() {
         getEmail, binding.etCreatePassword.text.trim().toString()
     ).addOnCompleteListener { task ->
         if (task.isSuccessful) {
-//            Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show()
             addLearnerToDatabase(getEmail, getName)
 
         } else {
             Toast.makeText(this, "Register Failed" + task.exception, Toast.LENGTH_SHORT)
                 .show()
-//            Log.e("RegisterActivity", "Failed: ${task.exception}")
         }
     }
 }

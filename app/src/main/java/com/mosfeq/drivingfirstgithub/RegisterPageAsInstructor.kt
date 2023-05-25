@@ -7,7 +7,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -118,7 +117,6 @@ class RegisterPageAsInstructor: AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Register Failed" + task.exception, Toast.LENGTH_SHORT)
                     .show()
-//                Log.e("RegisterActivity", "Failed: ${task.exception}")
             }
         }
     }
@@ -130,7 +128,6 @@ class RegisterPageAsInstructor: AppCompatActivity() {
         pdd!!.show()
         val randomise = UUID.randomUUID().toString()
         val ref: StorageReference = storageReference!!.child("image/$randomise")
-        Log.i("androidstudio", "addLearnerToDatabase: $ref\n$selectedImage")
         ref.putFile(selectedImage!!).addOnSuccessListener(OnSuccessListener<Any?> {
             ref.downloadUrl.addOnSuccessListener(OnSuccessListener<Uri> { uri ->
                 // Sign in success, update UI with the signed-in user's information

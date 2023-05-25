@@ -19,6 +19,7 @@ import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.dataClasses.Booking
 import com.mosfeq.drivingfirstgithub.databinding.FragmentTimetableBinding
+import com.mosfeq.drivingfirstgithub.instructor.adapter.TimetableInstructorAdapter
 import com.mosfeq.drivingfirstgithub.learner.adapters.TimetableAdapter
 
 class TimetableFragment : Fragment(R.layout.fragment_timetable),TimetableAdapter.ClickListener {

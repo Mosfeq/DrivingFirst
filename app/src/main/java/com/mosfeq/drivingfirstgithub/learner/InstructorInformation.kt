@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.R
@@ -57,6 +56,7 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                 .getReference("Instructors").child("Users").child(a)
 
         getLearnerData()
+
         ref!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -106,7 +106,6 @@ class InstructorInformation: Fragment(R.layout.fragment_instructor_information) 
                 instructorUri,
                 learnerUri
             )
-//            Toast.makeText(requireActivity(), "Chat added!", Toast.LENGTH_SHORT).show()
             val action = InstructorInformationDirections.actionInstructorInformationToUsersLearnerFragment()
             findNavController().navigate(action)
         }

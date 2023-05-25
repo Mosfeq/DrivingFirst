@@ -1,7 +1,6 @@
 package com.mosfeq.drivingfirstgithub.learner
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.mosfeq.drivingfirstgithub.Preference
-import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.dataClasses.Booking
 import com.mosfeq.drivingfirstgithub.databinding.FragmentTimetableLearnerBinding
 import com.mosfeq.drivingfirstgithub.learner.adapters.TimetableAdapter

@@ -1,4 +1,4 @@
-package com.mosfeq.drivingfirstgithub.instructor
+package com.mosfeq.drivingfirstgithub.instructor.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mosfeq.drivingfirstgithub.R
 import com.mosfeq.drivingfirstgithub.dataClasses.Booking
+import com.mosfeq.drivingfirstgithub.instructor.TimetableFragment
 import de.hdodenhof.circleimageview.CircleImageView
 
 class TimetableInstructorAdapter(
@@ -17,8 +18,6 @@ class TimetableInstructorAdapter(
     interface ClickListener {
         fun onClick(position: Int)
     }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstructorViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.timeline_item, parent, false)
@@ -44,7 +43,6 @@ class TimetableInstructorAdapter(
 
     inner class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        //        val lastName: TextView = itemView.findViewById(R.id.tvInstructorLastname)
         val time: TextView = itemView.findViewById(R.id.time)
         val date: TextView = itemView.findViewById(R.id.date)
         val name: TextView = itemView.findViewById(R.id.name)

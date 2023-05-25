@@ -161,9 +161,7 @@ class BookingPage: AppCompatActivity() {
             onError = OnError { errorInfo ->
                 Log.d("androidstudio", "Error: $errorInfo")
             }
-
         )
-
     }
     fun booking(currentDate: String, selectedDate: String): Int{
         val bookingID = (Random().nextInt(900000) + 100000).toString()

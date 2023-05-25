@@ -28,7 +28,7 @@ class UsersFragment : Fragment(){
     private lateinit var auth: FirebaseAuth
 
     private val userGroupInstAdapter: UserGroupInstAdapter = UserGroupInstAdapter()
-    private val userGroupModel: UserGroupViewModel by viewModels()
+    private val userGroupViewModel: UserGroupViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,7 +59,7 @@ class UsersFragment : Fragment(){
 
         rep = Preference.readString(requireActivity(), "email").toString()
         val a = rep.replace(".", "%")
-        userGroupModel.groups.observe(viewLifecycleOwner) {
+        userGroupViewModel.groups.observe(viewLifecycleOwner) {
             userList.clear()
             if (it != null) {
                 for(data in it){

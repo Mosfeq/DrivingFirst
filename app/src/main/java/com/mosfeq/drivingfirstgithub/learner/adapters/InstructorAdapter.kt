@@ -24,17 +24,6 @@ class InstructorAdapter(
         notifyDataSetChanged()
     }
 
-//    var onItemClick: ((instructor: Instructor) -> Unit)? = null
-
-//    private lateinit var clickListener: OnItemClickListener
-//    interface onItemClickListener{
-//        fun onItemClick(position: Int)
-//    }
-//
-//    fun setOnItemClickListener(listener: OnItemClickListener){
-//        clickListener = listener
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstructorViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.instructor_item, parent, false)
         return InstructorViewHolder(itemView)
@@ -45,21 +34,11 @@ class InstructorAdapter(
         holder.name.text = currentItem.name
         holder.location.text = currentItem.location
         holder.gender.text = currentItem.gender
-//        holder.age.text = currentItem.age.toString() + "Y"
         holder.price.text = "£" + currentItem.pricePerLesson.toString() + "/H"
         holder.description.text = currentItem.description
         holder.transmission.text = currentItem.transmission
         Glide.with(holder.image).load(instructorList[position].uri)
             .into(holder.image)
-
-//        holder.itemView.setOnClickListener {
-//            onItemClick?.invoke(currentItem)
-//        }
-
-//        holder.itemView.setOnClickListener {
-//            val position: Int = holder.absoluteAdapterPosition
-//            listener.onItemClick(position)
-//        }
     }
 
     override fun getItemCount(): Int {
@@ -81,15 +60,7 @@ class InstructorAdapter(
                 listener.onClick(position)
             }
         }
-
-//        init {
-//            itemView.setOnClickListener {
-//                listener.onItemClick(bindingAdapterPosition)
-//            }
-//        }
-
     }
-
 }
 
 

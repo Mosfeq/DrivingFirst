@@ -3,7 +3,6 @@ package com.mosfeq.drivingfirstgithub.learner
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,21 +24,13 @@ import java.util.Locale
 class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
 
     private lateinit var instructorAdapter: InstructorAdapter
-//    private lateinit var recyclerView: RecyclerView
     private lateinit var instructorList: ArrayList<Instructor>
-//    private lateinit var db: FirebaseFirestore
     private lateinit var binding: FragmentSearchInstructorBinding
     val filterArrayList: java.util.ArrayList<Instructor> = ArrayList<Instructor>()
 
     var ref: DatabaseReference? = null
     var modelInstructor: Instructor? = null
     var rep: String = ""
-
-//    lateinit var firstName: Array<String>
-//    lateinit var age: Array<Int>
-//    lateinit var phoneNumber: Array<Long>
-//    lateinit var marketingText: Array<String>
-//    lateinit var uid: Array<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,7 +40,7 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
         getInstructorList()
 
         binding.searchUserOrderTv.addTextChangedListener(object : TextWatcher{
-            //Built in parameters, no checks for before on during typing in search filter
+            //Built in parameters, no checks for before or during typing in search filter
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
@@ -82,9 +73,7 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
                 instructorAdapter.mfilterList(filterArrayList)
 
             } catch (e: Exception) {
-                Log.i("androidstudio", "filter: " + e)
             }
-
         }
     }
     override fun onCreateView(
@@ -97,8 +86,6 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
     override fun onClick(position: Int) {
         val selectedInstructor = instructorList[position]
         val email = selectedInstructor.email
-//        val uid = selectedInstructor.uid
-//        Toast.makeText(context, "Item Clicked at $position with UID: $uid", Toast.LENGTH_SHORT).show()
         val action = SearchInstructorFragmentDirections.actionSearchInstructorFragmentToInstructorInformation(email)
         findNavController().navigate(action)
     }
@@ -127,5 +114,4 @@ class SearchInstructorFragment: Fragment(), InstructorAdapter.ClickListener {
             }
         })
     }
-
 }
