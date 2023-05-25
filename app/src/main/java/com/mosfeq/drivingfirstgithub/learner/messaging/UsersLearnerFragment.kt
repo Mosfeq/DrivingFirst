@@ -61,6 +61,9 @@ class UsersLearnerFragment: Fragment() {
                         Log.i("androidstudio", "data: " + data.lemail + "\n" + rep)
                         userList.add(data)
                         userGroupAdapter.submitList(userList)
+                        //Creates list again by clearing old list, this is
+                        //good because if instructor messages learner it will show as one UserGroup that has been
+                        //updated, otherwise it will add another UserGroup, can build up
                     }
                 }
             }

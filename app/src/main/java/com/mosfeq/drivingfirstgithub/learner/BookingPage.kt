@@ -50,15 +50,15 @@ class BookingPage: AppCompatActivity() {
             val mDay = calender[Calendar.DAY_OF_MONTH]
 
             val mDateSetListener = OnDateSetListener { view, year, month, day ->
-                    datePicked = (month + 1).toString() + " " + day + ", " + year
+                datePicked = (month + 1).toString() + " " + day + ", " + year
 //                    Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
-                    binding.dateTime.text = "$datePicked - $timePicked"
-                    datetimepicked = datePicked + timePicked
-                    try {
-                    } catch (e: ParseException) {
-                        e.printStackTrace()
-                    }
+                binding.dateTime.text = "$datePicked - $timePicked"
+                datetimepicked = datePicked + timePicked
+                try {
+                } catch (e: ParseException) {
+                    e.printStackTrace()
                 }
+            }
             val d = DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay)
             d.show()
         }
@@ -88,19 +88,18 @@ class BookingPage: AppCompatActivity() {
             .getReference("booking")
 
         binding.booking.setOnClickListener(){
-//            if (datePicked.isEmpty() && timePicked.isEmpty()){
-//                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
-//            } else if(datePicked.isEmpty() || timePicked.isEmpty()){
-//                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
-//            } else{
-//
-//            }
-            val calendar = Calendar.getInstance().time
-            Log.e("New Test", "Time: $calendar")
-            val df = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val currentDate = df.format(calendar)
-            val selectedDate: String = newDateFormat(datePicked)
-            booking(currentDate, selectedDate)
+            if (datePicked.isEmpty() && timePicked.isEmpty()){
+                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
+            } else if(datePicked.isEmpty() || timePicked.isEmpty()){
+                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
+            } else{
+                val calendar = Calendar.getInstance().time
+                Log.e("New Test", "Time: $calendar")
+                val df = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                val currentDate = df.format(calendar)
+                val selectedDate: String = newDateFormat(datePicked)
+                booking(currentDate, selectedDate)
+            }
         }
     }
     fun booking(currentDate: String, selectedDate: String): Int{
@@ -112,7 +111,8 @@ class BookingPage: AppCompatActivity() {
             Toast.makeText(this, "Can't select date from past!", Toast.LENGTH_LONG).show()
             return 1
 
-        } else if (comparedDate == 0){
+        }
+        else if (comparedDate == 0){
             // Both dates are equal
             if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
                 db.child(userEmailID).child(bookingID).setValue(
@@ -164,7 +164,7 @@ class BookingPage: AppCompatActivity() {
     fun newDateFormat(datePicked: String): String {
         val currentDateFormat = SimpleDateFormat("MM dd, yyyy")
         val date: Date = currentDateFormat.parse(datePicked)
-        val newDateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val newDateFormat = SimpleDateFormat("yyyy/MM/dd")
         val newDate: String = newDateFormat.format(date)
         return newDate
     }

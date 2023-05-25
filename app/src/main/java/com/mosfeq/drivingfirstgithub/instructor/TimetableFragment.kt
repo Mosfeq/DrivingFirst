@@ -87,7 +87,7 @@ class TimetableFragment : Fragment(R.layout.fragment_timetable),TimetableAdapter
         val inputEditTextField = EditText(requireActivity())
         val dialog = AlertDialog.Builder(requireContext()).setTitle("Feedback")
             .setMessage("Leave Feedback to the client").setView(inputEditTextField)
-            .setPositiveButton("OK") { _, _ ->
+            .setPositiveButton("Send") { _, _ ->
                 val editTextInput = inputEditTextField.text.toString()
                 val learner = hashMapOf(
                     "feedback" to editTextInput

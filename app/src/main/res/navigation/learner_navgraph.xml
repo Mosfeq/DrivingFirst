@@ -81,6 +81,11 @@
             app:argType="com.mosfeq.drivingfirstgithub.dataClasses.UserGroup"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="labelName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Chat" />
     </fragment>
     <fragment
         android:id="@+id/faqFragment"

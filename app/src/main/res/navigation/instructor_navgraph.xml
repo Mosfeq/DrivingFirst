@@ -46,7 +46,18 @@
         android:id="@+id/chatFragment2"
         android:name="com.mosfeq.drivingfirstgithub.chatForBoth.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="group"
+            app:argType="com.mosfeq.drivingfirstgithub.dataClasses.UserGroup"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="labelName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Chat" />
+    </fragment>
     <fragment
         android:id="@+id/faqFragment2"
         android:name="com.mosfeq.drivingfirstgithub.FaqFragment"
