@@ -9,9 +9,25 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.mosfeq.drivingfirstgithub.BuildConfig
 import com.mosfeq.drivingfirstgithub.Preference
 import com.mosfeq.drivingfirstgithub.dataClasses.Booking
 import com.mosfeq.drivingfirstgithub.databinding.BookingPageBinding
+import com.paypal.checkout.PayPalCheckout
+import com.paypal.checkout.approve.OnApprove
+import com.paypal.checkout.cancel.OnCancel
+import com.paypal.checkout.config.CheckoutConfig
+import com.paypal.checkout.config.Environment
+import com.paypal.checkout.config.SettingsConfig
+import com.paypal.checkout.createorder.CreateOrder
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
+import com.paypal.checkout.error.OnError
+import com.paypal.checkout.order.Amount
+import com.paypal.checkout.order.AppContext
+import com.paypal.checkout.order.Order
+import com.paypal.checkout.order.PurchaseUnit
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -31,6 +47,21 @@ class BookingPage: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val config = CheckoutConfig(
+            application = application,
+            clientId = "AQ0egblEVz4U3VuXdVL9PuhMz42hGqs_J88oGHQDAVm19ZfJ-3WZLoEJE133gMUp9SamwzoXtgKg5Cuu",
+            environment = Environment.SANDBOX,
+            returnUrl = "${BuildConfig.APPLICATION_ID}://paypalpay",
+            currencyCode = CurrencyCode.GBP,
+            userAction = UserAction.PAY_NOW,
+            settingsConfig = SettingsConfig(
+                loggingEnabled = false,
+                shouldFailEligibility = false
+            )
+        )
+        PayPalCheckout.setConfig(config)
+        Log.i("androidstudio", "onCreate: "+"${BuildConfig.APPLICATION_ID}://paypalpay")
+
         binding = BookingPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
@@ -51,7 +82,6 @@ class BookingPage: AppCompatActivity() {
 
             val mDateSetListener = OnDateSetListener { view, year, month, day ->
                 datePicked = (month + 1).toString() + " " + day + ", " + year
-//                    Toast.makeText(this, "date $datePicked", Toast.LENGTH_SHORT).show()
                 binding.dateTime.text = "$datePicked - $timePicked"
                 datetimepicked = datePicked + timePicked
                 try {
@@ -101,6 +131,39 @@ class BookingPage: AppCompatActivity() {
                 booking(currentDate, selectedDate)
             }
         }
+
+        binding.payPalButton.setup(
+            createOrder =
+            CreateOrder { createOrderActions ->
+                val order =
+                    Order(
+                        intent = OrderIntent.CAPTURE,
+                        appContext = AppContext(userAction = UserAction.PAY_NOW),
+                        purchaseUnitList =
+                        listOf(
+                            PurchaseUnit(
+                                amount =
+                                Amount(currencyCode = CurrencyCode.GBP, value = intent.getStringExtra("price").toString())
+                            )
+                        )
+                    )
+                createOrderActions.create(order)
+            },
+            onApprove =
+            OnApprove { approval ->
+                approval.orderActions.capture { captureOrderResult ->
+                    Log.i("androidstudio", "CaptureOrderResult: $captureOrderResult")
+                }
+            },
+            onCancel = OnCancel {
+                Log.d("androidstudio", "Buyer canceled the PayPal experience.")
+            },
+            onError = OnError { errorInfo ->
+                Log.d("androidstudio", "Error: $errorInfo")
+            }
+
+        )
+
     }
     fun booking(currentDate: String, selectedDate: String): Int{
         val bookingID = (Random().nextInt(900000) + 100000).toString()
