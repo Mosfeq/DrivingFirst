@@ -14,7 +14,8 @@ class UserGroupViewModel: ViewModel() {
     @ExperimentalCoroutinesApi
     val groups = firebaseQuery.getGroups().asLiveData()
 
-    fun addNewGroup(iname:String,Lname:String,iemail: String,lemail:String,insUri:String,lUri:String)= viewModelScope.launch {
+    fun addNewGroup(iname:String,Lname:String,iemail: String,lemail:String,insUri:String,lUri:String)=
+        viewModelScope.launch {
         firebaseQuery.createGroup(iname,Lname,iemail,lemail,insUri,lUri)
     }
 }

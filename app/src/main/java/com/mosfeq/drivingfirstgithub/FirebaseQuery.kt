@@ -49,7 +49,6 @@ class FirebaseQuery {
                 .orderBy("name")
                 .addSnapshotListener { value, error ->
                     if(error!=null){
-//                    Log.d(TAG, "getGroups: error occurred ")
                         return@addSnapshotListener
                     }
                     val map = value?.documents?.map {
@@ -75,7 +74,6 @@ class FirebaseQuery {
                 document.toObject(Message::class.java)?.let { list.add(it) }
             }
         }catch (e:Exception){
-//            Log.d(TAG, "loadInitialChat: error")
         }
         return list
     }
@@ -103,7 +101,6 @@ class FirebaseQuery {
                 .orderBy("sendAt")
                 .addSnapshotListener { value, error ->
                     if (error != null) {
-//                                Log.d(TAG, "listenChat: error!")
                         return@addSnapshotListener
                     }
                     val map = value?.documents?.map {

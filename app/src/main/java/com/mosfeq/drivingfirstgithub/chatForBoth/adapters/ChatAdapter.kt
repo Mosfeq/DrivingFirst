@@ -28,19 +28,19 @@ class ChatAdapter: ListAdapter<Message, ChatHolder>(ChatDiffUtil()) {
         }
     }
 
-    override fun onBindViewHolder(holder: ChatHolder, position: Int) {
-        when(holder){
-            is ChatHolder.SendText-> holder.bind(getItem(position))
-            is ChatHolder.ReceivedText -> holder.bind(getItem(position))
-        }
-    }
-
     override fun getItemViewType(position: Int): Int {
         val message= getItem(position)
         if(message.sentBy== Firebase.auth.currentUser?.uid){
             return R.layout.send_text_item
         }
         return R.layout.received_text_item
+    }
+
+    override fun onBindViewHolder(holder: ChatHolder, position: Int) {
+        when(holder){
+            is ChatHolder.SendText-> holder.bind(getItem(position))
+            is ChatHolder.ReceivedText -> holder.bind(getItem(position))
+        }
     }
 
     class ChatDiffUtil: DiffUtil.ItemCallback<Message>(){

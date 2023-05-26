@@ -19,7 +19,6 @@ data class UserGroup(
     var lname:String?="",
     val timeOfLastMessage:String?="",
 ): Parcelable {
-    //Send object though function
     companion object {
         fun DocumentSnapshot.toGroup(): UserGroup {
             val createdAt = getString("createdAt")

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -48,10 +47,8 @@ class ChatFragment: Fragment(R.layout.fragment_chat) {
         viewModel.loadInitialChat.observe(viewLifecycleOwner){
             chatAdapter.submitList(it)
         }
-        //This above observe detects changes after the below observe
 
         viewModel.chats.observe(viewLifecycleOwner){
-//            Log.d(TAG, "onViewCreated: $it")
             chatAdapter.submitList(it)
             binding.chatRecyclerView.scrollToPosition(chatAdapter.itemCount-1)
             //If there is change to chat, automatically scrolls to last chat item

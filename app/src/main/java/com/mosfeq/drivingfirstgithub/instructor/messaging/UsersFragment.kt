@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -39,14 +38,6 @@ class UsersFragment : Fragment(){
         setHasOptionsMenu(true)
         return binding.root
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//        if(auth.currentUser==null){
-//            findNavController().navigate(R.id.action_fragmentGroups_to_loginFragment)
-//        }
-//
-//    }
 
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

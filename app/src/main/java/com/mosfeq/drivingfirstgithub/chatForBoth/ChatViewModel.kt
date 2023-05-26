@@ -15,7 +15,6 @@ class ChatViewModel(
 ): ViewModel() {
 
     private val firebaseQuery: FirebaseQuery = FirebaseQuery()
-
     private var _loadInitialChat = MutableLiveData<List<Message>>()
     val loadInitialChat: LiveData<List<Message>>
     get() = _loadInitialChat

@@ -28,6 +28,7 @@ import com.paypal.checkout.order.Amount
 import com.paypal.checkout.order.AppContext
 import com.paypal.checkout.order.Order
 import com.paypal.checkout.order.PurchaseUnit
+import com.paypal.checkout.paymentbutton.PayPalButton
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -35,7 +36,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.Random
 
-class BookingPage: AppCompatActivity() {
+class BookingPage : AppCompatActivity() {
 
     private lateinit var binding: BookingPageBinding
     private var datePicked = ""
@@ -44,6 +45,7 @@ class BookingPage: AppCompatActivity() {
     private var userEmail = ""
     private var userEmailID = ""
     private lateinit var db: DatabaseReference
+    private lateinit var payPalButton: PayPalButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,18 +62,16 @@ class BookingPage: AppCompatActivity() {
             )
         )
         PayPalCheckout.setConfig(config)
-        Log.i("androidstudio", "onCreate: "+"${BuildConfig.APPLICATION_ID}://paypalpay")
 
         binding = BookingPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
         intent = intent
-
         binding.instructorName.text = "Instructor Name: ${intent.getStringExtra("instructorName")}"
         binding.instructorPrice.text = "Price Per Hour: £${intent.getStringExtra("price")}"
-
-        userEmailID = Preference.readString(this@BookingPage, "email").toString().replace(".", "%").trim()
+        userEmailID =
+            Preference.readString(this@BookingPage, "email").toString().replace(".", "%").trim()
         userEmail = Preference.readString(this@BookingPage, "email").toString()
 
         binding.setDate.setOnClickListener() {
@@ -114,24 +114,28 @@ class BookingPage: AppCompatActivity() {
             mTimePicker.show()
         }
 
-        db = FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
-            .getReference("booking")
+        db =
+            FirebaseDatabase.getInstance("https://driving-first-github-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("booking")
 
-        binding.booking.setOnClickListener(){
-            if (datePicked.isEmpty() && timePicked.isEmpty()){
-                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
-            } else if(datePicked.isEmpty() || timePicked.isEmpty()){
-                Toast.makeText(this,"Select Date and Time", Toast.LENGTH_SHORT).show()
-            } else{
-                val calendar = Calendar.getInstance().time
-                Log.e("New Test", "Time: $calendar")
-                val df = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                val currentDate = df.format(calendar)
-                val selectedDate: String = newDateFormat(datePicked)
-                booking(currentDate, selectedDate)
+        binding.booking.setOnClickListener() {
+            if (datePicked.isEmpty() || timePicked.isEmpty()) {
+                Toast.makeText(this, "Select Date and Time", Toast.LENGTH_SHORT).show()
+            }
+            if (!datePicked.isEmpty() && !timePicked.isEmpty()) {
+                Log.i("androidstudio", "Message" + Preference.readString(this, "paypal").equals("paid"))
+                if (Preference.readString(this, "paypal").equals("paid")) {
+                    val calendar = Calendar.getInstance().time
+                    Log.e("New Test", "Time: $calendar")
+                    val df = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    val currentDate = df.format(calendar)
+                    val selectedDate: String = newDateFormat(datePicked)
+                    booking(currentDate, selectedDate)
+                } else {
+                    Toast.makeText(this, "Please Make the payment first!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
-
         binding.payPalButton.setup(
             createOrder =
             CreateOrder { createOrderActions ->
@@ -143,7 +147,10 @@ class BookingPage: AppCompatActivity() {
                         listOf(
                             PurchaseUnit(
                                 amount =
-                                Amount(currencyCode = CurrencyCode.GBP, value = intent.getStringExtra("price").toString())
+                                Amount(
+                                    currencyCode = CurrencyCode.GBP,
+                                    value = intent.getStringExtra("price").toString()
+                                )
                             )
                         )
                     )
@@ -152,18 +159,20 @@ class BookingPage: AppCompatActivity() {
             onApprove =
             OnApprove { approval ->
                 approval.orderActions.capture { captureOrderResult ->
-                    Log.i("androidstudio", "CaptureOrderResult: $captureOrderResult")
+                    Toast.makeText(this, "Transaction has been made successfully!", Toast.LENGTH_SHORT).show()
+                    Preference.writeString(this, "paypal", "paid")
                 }
             },
             onCancel = OnCancel {
-                Log.d("androidstudio", "Buyer canceled the PayPal experience.")
+                Preference.writeString(this, "paypal", "")
             },
             onError = OnError { errorInfo ->
-                Log.d("androidstudio", "Error: $errorInfo")
+                Preference.writeString(this, "paypal", "")
             }
         )
     }
-    fun booking(currentDate: String, selectedDate: String): Int{
+
+    fun booking(currentDate: String, selectedDate: String): Int {
         val bookingID = (Random().nextInt(900000) + 100000).toString()
         val comparedDate: Int = currentDate.compareTo(selectedDate)
 
@@ -172,8 +181,7 @@ class BookingPage: AppCompatActivity() {
             Toast.makeText(this, "Can't select date from past!", Toast.LENGTH_LONG).show()
             return 1
 
-        }
-        else if (comparedDate == 0){
+        } else if (comparedDate == 0) {
             // Both dates are equal
             if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
                 db.child(userEmailID).child(bookingID).setValue(
@@ -193,6 +201,7 @@ class BookingPage: AppCompatActivity() {
                     )
                 )
                 Toast.makeText(this, "Lesson Booked", Toast.LENGTH_LONG).show()
+                Preference.writeString(this, "paypal", "")
             } else {
                 Toast.makeText(this, "Date or Time required!", Toast.LENGTH_LONG).show()
             }
@@ -200,6 +209,8 @@ class BookingPage: AppCompatActivity() {
         }
         //Current date is behind of selected date
         if (datePicked.isNotEmpty() && timePicked.isNotEmpty()) {
+
+
             db.child(userEmailID).child(bookingID).setValue(
                 Booking(
                     intent.getStringExtra("price").toString(),
@@ -217,11 +228,13 @@ class BookingPage: AppCompatActivity() {
                 )
             )
             Toast.makeText(this, "Lesson Booked", Toast.LENGTH_LONG).show()
+            Preference.writeString(this, "paypal", "")
         } else {
             Toast.makeText(this, "Date or Time required!", Toast.LENGTH_LONG).show()
         }
         return -1
     }
+
     fun newDateFormat(datePicked: String): String {
         val currentDateFormat = SimpleDateFormat("MM dd, yyyy")
         val date: Date = currentDateFormat.parse(datePicked)
