@@ -84,16 +84,23 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                 && binding.description.text.trim().isNotEmpty()
                 && selectedImage != null
             ) {
-                if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
-                    registerAsInstructor(
-                        binding.etCreateEmail.text.toString(),
-                        binding.etCreateName.text.toString()
-                    )
-                    binding.etCreateEmail.text.clear()
-                    binding.etCreatePassword.text.clear()
-                    binding.etCreateConfirmPassword.text.clear()
-                } else {
-                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                if (binding.gender.text.toString() == "M" || binding.gender.text.toString() == "F"){
+                    if (binding.etCreatePassword.text.toString().length >= 8){
+                        if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
+                            registerAsInstructor(
+                                binding.etCreateEmail.text.toString(),
+                                binding.etCreateName.text.toString())
+                            binding.etCreateEmail.text.clear()
+                            binding.etCreatePassword.text.clear()
+                            binding.etCreateConfirmPassword.text.clear()
+                        } else {
+                            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                        }
+                    }else{
+                        Toast.makeText(this, "Password length too short", Toast.LENGTH_SHORT).show()
+                    }
+                }else{
+                    Toast.makeText(this, "Enter M or F for gender", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()

@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:background="@drawable/edittext_features"
-            android:hint="Gender"
+            android:hint="Gender: Enter F or M"
             android:inputType="text"
             android:maxLines="1"
             android:padding="15dp"
