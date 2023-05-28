@@ -48,6 +48,7 @@ class InstructorProfilePage: Fragment(R.layout.fragment_instructor_profile_page)
     private lateinit var dbLearner: DatabaseReference
     private lateinit var binding: FragmentInstructorProfilePageBinding
 
+
     var selectedImage: Uri? = null
     val PICK_IMAGE = 1
     var bitmap: Bitmap? = null

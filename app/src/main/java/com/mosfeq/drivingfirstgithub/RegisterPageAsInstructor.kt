@@ -22,6 +22,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mosfeq.drivingfirstgithub.databinding.RegisterPageInstructorBinding
 import com.mosfeq.drivingfirstgithub.dataClasses.Instructor
+import com.mosfeq.drivingfirstgithub.instructor.InstructorFragmentManager
 import com.mosfeq.drivingfirstgithub.learner.LearnerFragmentManager
 import java.io.IOException
 import java.util.Objects
@@ -84,7 +85,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                 && binding.description.text.trim().isNotEmpty()
                 && selectedImage != null
             ) {
-                if (binding.gender.text.toString() == "M" || binding.gender.text.toString() == "F"){
+                if (binding.gender.text.toString() == "Female" || binding.gender.text.toString() == "Man"){
                     if (binding.etCreatePassword.text.toString().length >= 8){
                         if (binding.etCreatePassword.text.toString() == binding.etCreateConfirmPassword.text.toString()) {
                             registerAsInstructor(
@@ -100,7 +101,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                         Toast.makeText(this, "Password length too short", Toast.LENGTH_SHORT).show()
                     }
                 }else{
-                    Toast.makeText(this, "Enter M or F for gender", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Enter Female or Man", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Information required", Toast.LENGTH_SHORT).show()
@@ -163,7 +164,7 @@ class RegisterPageAsInstructor: AppCompatActivity() {
                 val msg = dialog.findViewById<TextView>(R.id.textshow)
                 msg.text = "Data Uploaded Successfully"
                 ok.setOnClickListener {
-                    val intent = Intent(this, LearnerFragmentManager::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     dialog.dismiss()
                 }

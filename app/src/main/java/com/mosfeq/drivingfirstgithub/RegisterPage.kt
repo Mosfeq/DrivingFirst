@@ -141,7 +141,7 @@ class RegisterPage : AppCompatActivity() {
                 val msg = dialog.findViewById<TextView>(R.id.textshow)
                 msg.text = "Data Uploaded Successfully"
                 ok.setOnClickListener {
-                    val intent = Intent(this, LearnerFragmentManager::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     dialog.dismiss()
                 }

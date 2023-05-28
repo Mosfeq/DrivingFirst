@@ -123,7 +123,7 @@ class ProfilePage : Fragment(R.layout.fragment_profile_page) {
                             "uri" to uris
                         )
                         dbLearner.updateChildren(learner as Map<String, Any>)
-                        Toast.makeText(requireActivity(), "updated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireActivity(), "Profile Updated!", Toast.LENGTH_SHORT).show()
                     })
                     pdd!!.dismiss()
                 }).addOnFailureListener(OnFailureListener {
@@ -141,6 +141,7 @@ class ProfilePage : Fragment(R.layout.fragment_profile_page) {
                     "uri" to uris
                 )
                 dbLearner.updateChildren(learner as Map<String, Any>)
+                Toast.makeText(requireActivity(), "Profile Updated!", Toast.LENGTH_SHORT).show()
             }
             val action = ProfilePageDirections.actionProfilePageToSettingsLearnerFragment()
             findNavController().navigate(action)
