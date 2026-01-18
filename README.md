@@ -48,6 +48,41 @@ Payment flow integrated directly into the app
 
 -------
 
+### Tech Stack 🛠 
+#### Android
+
+- Kotlin
+
+- XML layouts
+
+- Android Navigation Component
+
+- ViewBinding
+
+#### Backend & Services
+
+- Firebase Authentication
+
+- Firebase Firestore – structured lesson & user data
+
+- Firebase Realtime Database – real-time messaging
+
+- PayPal SDK – payment processing
+
+-------
+
+### Architecture & Design 🏗 
+
+Separation of learner and instructor logic
+
+Firebase-driven backend for scalability
+
+Modular navigation for maintainability
+
+Clean UI built with XML layouts
+
+-------
+
 ## Getting Started 🚀 
 
 Clone the repository:
