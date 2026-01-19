@@ -1,4 +1,4 @@
-# Driving First 🚗 
+# 🚗 Driving First 
 
 Driving First is a native Android application designed to connect driving instructors with learner drivers, enabling them to manage lessons, communicate seamlessly, and handle secure payments all within one platform.
 
@@ -11,16 +11,14 @@ The app is built using Kotlin, Firebase and XML-based UI, following modern Andro
 Secure registration and login using Firebase Authentication
 
 Role-based access for Learners and Instructors
-
-
+<br>
 
 ### Role-Based Navigation 🧭 
 
 Separate navigation graphs for learners and instructors
 
 Tailored user flows depending on account type
-
-
+<br>
 
 ### Lesson Management 📅 
 
@@ -29,16 +27,14 @@ Instructors can create and manage driving lessons
 Learners can view, book, and manage their lessons
 
 Real-time updates using Firebase Realtime Database
-
-
+<br>
 
 ### In-App Messaging 💬 
 
 Real-time chat between instructors and learners
 
 Using Firebase Datastore
-
-
+<br>
 
 ### Secure Payments 💳 
 
@@ -48,7 +44,7 @@ Payment flow integrated directly into the app
 
 -------
 
-### Tech Stack 🛠 
+## 🛠 Tech Stack
 #### Android
 
 - Kotlin
@@ -71,7 +67,7 @@ Payment flow integrated directly into the app
 
 -------
 
-### Architecture & Design 🏗 
+## 🏗 Architecture & Design
 
 Separation of learner and instructor logic
 
@@ -83,12 +79,11 @@ Clean UI built with XML layouts
 
 -------
 
-## Getting Started 🚀 
+## 🚀 Getting Started 
 
 Clone the repository:
 
 git clone https://github.com/Mosfeq/DrivingFirst.git
-
 
 Open the project in Android Studio
 
